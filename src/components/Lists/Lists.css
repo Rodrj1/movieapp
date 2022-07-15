@@ -1,0 +1,33 @@
+.list {
+    width: 80%;
+    height: auto;
+    padding: 20px;
+    margin: auto;
+    background: linear-gradient(to right,
+    hsl(246, 55%, 10%),
+    hsl(308, 35%, 26%));
+    color: white;
+}
+
+.list>div:first-child {
+   margin-bottom: 10px;
+}
+
+.flex-list-container {
+    display: flex;
+    width: 90%;
+    height: auto;
+    margin: auto;
+    padding: 20px;
+    color: white;
+    border-top: 1px solid white;
+}
+
+.listed-movies-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 250px);
+    grid-gap: 20px;
+    margin: 20px 20px;
+    justify-content: center;
+}

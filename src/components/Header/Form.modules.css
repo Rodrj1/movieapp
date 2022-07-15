@@ -1,0 +1,80 @@
+.form {
+	display: flex;
+	flex-wrap: wrap;
+	width: auto;
+	height: 500px;
+	color: white;
+	justify-content: center;
+	align-items: center;
+}
+
+.form h1 {}
+
+.form__section {
+	width: 90%;
+	margin: 10px;
+	position: relative;
+}
+
+.form__section input, .form__section textarea {
+	height: 20px;
+	width: 100%;
+	background: transparent;
+	border: 1px solid #fff;
+	transition: .3s;
+	color: #fff;
+}
+
+.form__section input:hover, .form__section textarea:hover, .form__section button:hover {
+	background: hsl(210, 90%, 15%);
+}
+
+.form__section label {
+	position: absolute;
+	padding: 2px;
+	height: 100%;
+	top: 0;
+	left: 0;
+	transition: .2s;
+	cursor: text;
+	font-size: 14px;
+}
+
+.form__section textarea {
+	height: 100px;
+}
+
+.form__section input:focus~label, .form__section input:valid~label,
+.form__section textarea:focus~label, .form__section textarea:valid~label {
+	top: -25px;
+	font-size: 13px;
+}
+
+.form button {
+	font-size: 25px;
+	letter-spacing: 5px;
+	height: 50px;
+	width: 90%;
+	background: transparent;
+	border: 1px solid #fff;
+	border-radius: 10px;
+	box-shadow: inset 0 0 0 0 hsl(216, 92%, 50%);
+	color: #fff;
+	cursor: pointer;
+	transition: ease-out .3s;
+}
+
+.form button:hover {
+	box-shadow: inset 70px 0 50px 0 hsl(210, 90%, 15%);
+}
+
+
+@media screen and (max-width: 480px) {
+	.form {
+		width: 100%;
+	}
+
+	.form-section label {
+		font-size: 25px;
+	}
+}
