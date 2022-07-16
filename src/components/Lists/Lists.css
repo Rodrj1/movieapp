@@ -31,3 +31,19 @@
     margin: 20px 20px;
     justify-content: center;
 }
+
+@media screen and (max-width: 648px) {
+    .list {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        padding: 0px;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .listed-movies-container {
+        margin: 0px;
+    }
+    
+}

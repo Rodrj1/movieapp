@@ -27,3 +27,10 @@
 .list-maker textarea {
     height: 60px;
 }
+
+@media screen and (max-width: 648px) {
+    .list-maker {
+        width: 100%;
+        padding: 0px;
+    }
+}

@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToList } from "../../../../../features/tasks/handleLists";
 import { selectLists } from "../../../../../features/tasks/handleLists";
 import { v4 as uuid } from "uuid";
+import { Link } from "react-router-dom";
 
 const UserLists = ({ type }) => {
   const lists = useSelector(selectLists);
@@ -9,7 +10,7 @@ const UserLists = ({ type }) => {
   const dispatch = useDispatch();
 
   const handleAddToList = (id) => {
-    dispatch(addToList({...type, uuid: uuid(), listName: id }));
+    dispatch(addToList({ ...type, uuid: uuid(), listName: id }));
   };
 
   const LISTS = lists.map((list) => (
@@ -23,12 +24,26 @@ const UserLists = ({ type }) => {
   ));
 
   return (
-      <button className="dropdown btn-trailer-off">
-        <i className="fa-solid fa-circle-play fa-2xl"></i> Add to Lists
-        <div className="dropdown-content">
-          {LISTS.length > 0 ? LISTS : <div>You must create a list</div>}
-        </div>
-      </button>
+    <button className="dropdown btn-trailer-off">
+      <i className="fa-solid fa-circle-play fa-2xl" /> Add to Lists
+      <div className="dropdown-content">
+        {LISTS.length > 0 ? (
+          <>
+            {" "}
+            <div className="user-lists">
+              <i className="fa-solid fa-plus" /> Create New List
+            </div>{" "}
+            {LISTS}
+          </>
+        ) : (
+          <Link to="/lists" className="link">
+            <div className="user-lists">
+              <i className="fa-solid fa-plus" /> Create New List
+            </div>
+          </Link>
+        )}
+      </div>
+    </button>
   );
 };
 

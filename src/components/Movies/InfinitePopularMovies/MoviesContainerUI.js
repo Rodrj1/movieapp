@@ -1,5 +1,5 @@
 import MovieCard from "../MoviesComponents/MovieCard/MovieCard";
-import getGenres from "../../../data/getGenres";
+import genreData from "../../../data/genreData";
 import FunctionalButton from "../../buttons/FunctionalButton";
 import "./MoviesContainerUI.css";
 import { v4 as uuid } from "uuid";
@@ -10,7 +10,7 @@ const MoviesContainerUI = ({
   handleOnChange,
   handleOnClick,
 }) => {
-  const GENRE_FILTERS = getGenres.map((genre) => (
+  const GENRE_FILTERS = genreData.map((genre) => (
     <FunctionalButton
       key={genre.name}
       id={genre.id}

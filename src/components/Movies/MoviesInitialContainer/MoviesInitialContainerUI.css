@@ -27,3 +27,14 @@
     font-size: 1.5rem;
     margin-bottom: 10px;
 }
+
+@media screen and (max-width: 648px) {
+    .filter-main-page {
+        margin: auto;
+        width: 100%;
+        padding: 0px;
+    }
+    .filter-main-page p, .filter-main-page button {
+        margin-left: 20px;
+    }
+}

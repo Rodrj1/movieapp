@@ -1,4 +1,4 @@
-const getGenres = [
+const genreData = [
   { id: 28, name: "Action" },
   { id: 12, name: "Adventure" },
   { id: 16, name: "Animation" },
@@ -20,4 +20,4 @@ const getGenres = [
   { id: 37, name: "Western" },
 ];
 
-export default getGenres;
+export default genreData;

@@ -5,14 +5,14 @@ import axios from "axios";
 // API calls.
 // ------------------------------------------------------------------------
 
-const popularURL = `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=1d2291efea2e84d18b938ffde00ff81b&page=1`;
-
-const upcomingURL = `https://api.themoviedb.org/3/movie/upcoming?api_key=1d2291efea2e84d18b938ffde00ff81b&language=en-US&page=1`;
-
-const topRatedURL = `https://api.themoviedb.org/3/movie/top_rated?api_key=1d2291efea2e84d18b938ffde00ff81b&language=en-US&page=1`;
-
-const weeklyURL = `
+const TRENDS_WEEKLY_URL = `
 https://api.themoviedb.org/3/trending/all/week?api_key=1d2291efea2e84d18b938ffde00ff81b`;
+
+const MOVIES_POPULAR_URL = `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=1d2291efea2e84d18b938ffde00ff81b&page=1`;
+
+const MOVIES_UPCOMING_URL = `https://api.themoviedb.org/3/movie/upcoming?api_key=1d2291efea2e84d18b938ffde00ff81b&language=en-US&page=1`;
+
+const MOVIES_TOP_RATED_URL = `https://api.themoviedb.org/3/movie/top_rated?api_key=1d2291efea2e84d18b938ffde00ff81b&language=en-US&page=1`;
 
 // ------------------------------------------------------------------------
 
@@ -25,10 +25,10 @@ const MoviesInitialContainer = () => {
   useEffect(() => {
     const fetchMovies = async () => {
       try {
-        const getWeeklyTrends = await axios.get(weeklyURL);
-        const getPopularMovies = await axios.get(popularURL);
-        const getUpcomingMovies = await axios.get(upcomingURL);
-        const getTopRatedMovies = await axios.get(topRatedURL);
+        const getWeeklyTrends = await axios.get(TRENDS_WEEKLY_URL);
+        const getPopularMovies = await axios.get(MOVIES_POPULAR_URL);
+        const getUpcomingMovies = await axios.get(MOVIES_UPCOMING_URL);
+        const getTopRatedMovies = await axios.get(MOVIES_TOP_RATED_URL);
         setWeeklyTrends(getWeeklyTrends.data.results);
         setPopularMovies(getPopularMovies.data.results);
         setUpcomingMovies(getUpcomingMovies.data.results);

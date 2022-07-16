@@ -1,30 +1,24 @@
-.genre-button {
-    height: 50px;
+.genre-button, list-button, .category-button {
     background: hsl(272, 45%, 30%);
+    border: 1px solid transparent;
     border-radius: 20px;
     color: white;
     font-family: inherit;
     font-weight: 600;
     font-size: 1.1rem;
     transition: .3s ease-in-out;
-    border: 1px solid transparent;
 }
 
-.genre-button:hover {
-    box-shadow: inset 150px 0 50px 0 hsl(308, 35%, 26%);
-    border: 1px solid white;
-}
-
-.genre-button:focus {
-    box-shadow: inset 150px 0 50px 0 hsl(246, 55%, 10%);
+.genre-button {
+    height: 50px;
 }
 
 .list-button {
     height: 40px;
     width: 150px;
     background: hsl(272, 45%, 30%);
-    border-radius: 20px;
     border: 1px solid transparent;
+    border-radius: 20px;
     color: white;
     font-family: inherit;
     font-weight: 600;
@@ -32,11 +26,19 @@
     transition: .3s ease-in-out;
 }
 
-.list-button:hover {
+.category-button {
+    margin: 10px 0px;
+    height: 40px;
+    width: 155px;
+}
+
+.genre-button:hover, .list-button:hover, .category-button:hover {
     box-shadow: inset 150px 0 50px 0 hsl(308, 35%, 26%);
     border: 1px solid white;
 }
 
-.list-button:focus {
-    box-shadow: inset 150px 0 50px 0 hsl(246, 55%, 10%);
+@media screen and (max-width: 648px) {
+    .list-button {
+        margin: auto;
+    }
 }
