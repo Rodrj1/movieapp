@@ -20,16 +20,11 @@ const Header = () => {
 
       <ul className={`flex-item ${!openMenu ? "nav-menu active" : "nav-menu"}`}>
         <Link to="/lists" className="link">
-          <li className="links">
-            Lists
-          </li>
+          <li>Lists</li>
         </Link>
-        <li className="links">
-          <a>Products</a>
-        </li>
-        <li className="links">
-          <a>Contact</a>
-        </li>
+        <Link to="/allmovies" className="link">
+          <li>View All Movies</li>
+        </Link>
       </ul>
     </div>
   );

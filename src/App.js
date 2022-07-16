@@ -1,11 +1,12 @@
 import "./App.css";
 import Header from "./components/Header/Header";
-import MainLayout from "./components/MainLayout/MainLayout";
 import MovieDetails from "./components/Movies/MoviesComponents/MovieDetails/MovieDetails";
+import MoviesInitialContainer from "./components/Movies/MoviesInitialContainer/MoviesInitialContainer";
 import Lists from "./components/Lists/Lists";
 import { BrowserRouter, Route, Routes as Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./app/store";
+import MoviesContainer from "./components/Movies/InfinitePopularMovies/MoviesContainer";
 
 function App() {
   return (
@@ -15,9 +16,10 @@ function App() {
         <Switch>
           <Route path="*" element={<h1>THIS PAGE DOES NOT EXIST!</h1>} />
           <Route path="/lists" element={<Lists />} />
-          <Route path="/" element={<MainLayout />} />
-          <Route path="/home" element={<MainLayout />} />
+          <Route path="/" element={<MoviesInitialContainer />} />
+          <Route path="/home" element={<MoviesInitialContainer />} />
           <Route path="/movie/:movieId" element={<MovieDetails />} />
+          <Route path="/allmovies" element={<MoviesContainer />} />
         </Switch>
       </BrowserRouter>
     </Provider>

@@ -1,6 +1,6 @@
-import MovieCard from "./MoviesComponents/MovieCard/MovieCard";
-import getGenres from "../../data/getGenres";
-import FunctionalButton from "../buttons/FunctionalButton";
+import MovieCard from "../MoviesComponents/MovieCard/MovieCard";
+import getGenres from "../../../data/getGenres";
+import FunctionalButton from "../../buttons/FunctionalButton";
 import "./MoviesContainerUI.css";
 import { v4 as uuid } from "uuid";
 
@@ -25,14 +25,18 @@ const MoviesContainerUI = ({
 
   return (
     <div className="movie-column-container">
-      <form onSubmit={handleOnSubmit}>
+      <br />
+      <form onSubmit={handleOnSubmit} className="search-movie-container">
+        <h1>WELCOME TO MOVIESRC.</h1>
+        <h3>Look out for trending movies and TV shows.</h3>
         <input
           className="search"
           type="search"
-          placeholder="Search Movie..."
+          placeholder="Search for a movie or TV show..."
           onChange={handleOnChange}
         />
       </form>
+      <br />
       <div className="genres-container">{GENRE_FILTERS}</div>
       <div className="movies-container">{MOVIE_CARDS}</div>
     </div>

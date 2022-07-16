@@ -2,13 +2,7 @@ import { formatLanguage } from "../../../../functions/formatLanguage";
 import "./MovieDetailsUI.css";
 import Description from "./Description/Description";
 
-const MovieDetailsUI = ({
-  movie,
-  genres,
-  images,
-  cast,
-  reviews,
-}) => {
+const MovieDetailsUI = ({ movie, genres, images, cast, reviews }) => {
   const regexPrice = /\B(?=(\d{3})+(?!\d))/g;
 
   const BUDGET = movie.budget?.toString().replace(regexPrice, ",");
@@ -31,6 +25,7 @@ const MovieDetailsUI = ({
 
   return (
     <>
+      <br />
       <div className="flex-details">
         <Description
           POSTER={POSTER_URL}
@@ -45,7 +40,7 @@ const MovieDetailsUI = ({
           movie={movie}
         />
       </div>
-
+      <br />
       <div className="main-separator">
         <div className="flex-cast">
           <div className="flex-cast-item flex-column-container">

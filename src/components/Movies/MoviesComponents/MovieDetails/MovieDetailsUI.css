@@ -10,13 +10,14 @@ h3 {
 
 .flex-details {
     display: flex;
-    width: 100%;
+    width: 70%;
+    margin: auto;
     min-height: 500px;
     align-items: center;
     background: linear-gradient(to right,
             hsl(246, 55%, 10%),
             hsl(308, 35%, 26%));
-    margin-bottom: 40px;
+
     position: relative;
 }
 
@@ -61,7 +62,8 @@ h3 {
 }
 
 .main-separator {
-    width: 100%;
+    width: 90%;
+    margin: auto;
     background-color: white;
 }
 
@@ -86,6 +88,7 @@ h3 {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin-left: 20px;
 }
 
 
@@ -226,6 +229,7 @@ h3 {
     .flex-details {
         flex-wrap: wrap;
         justify-content: center;
+        width: 100%;
     }
 
     .flex-details-item:nth-child(1) {
@@ -255,5 +259,11 @@ h3 {
     .flex-desc-item-2 {
         margin-top: 25px;
         margin-bottom: 0;
+    }
+    .main-separator {
+        width: 100%;
+    }
+    .flex-cast {
+        flex-direction: column;
     }
 }

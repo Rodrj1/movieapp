@@ -12,6 +12,7 @@ const Lists = () => {
 
   return (
     <>
+      <br />
       <ListMaker />
 
       {LISTS}

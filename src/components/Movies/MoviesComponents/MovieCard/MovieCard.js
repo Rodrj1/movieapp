@@ -10,6 +10,7 @@ const MovieCard = ({ movie, onRemove }) => {
   const RATING = movie.vote_average;
   const LINK_ID = movie.id;
   const MOVIE_UUID = movie.uuid;
+  const TV_SHOW_TITLE = movie.original_name;
 
   return (
     <div className="card">
@@ -20,7 +21,7 @@ const MovieCard = ({ movie, onRemove }) => {
           <img src={placeholder} alt={ALT_TITLE} />
         )}
       </Link>
-      <h1>{TITLE}</h1>
+      <h1>{TITLE ? TITLE : TV_SHOW_TITLE}</h1>
       <h1>
         <i className="fa-solid fa-star"></i>
         {RATING}

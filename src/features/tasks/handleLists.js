@@ -22,8 +22,15 @@ export const handleListsSlice = createSlice({
         (list) => list.uuid === action.payload.listName
       );
       if (findList) {
-        const index = state.lists.indexOf(findList);
-        state.lists[index].items.push(action.payload);
+        const listIndex = state.lists.indexOf(findList);
+        const movieIsInList = state.lists[listIndex].items.find(
+          (movie) => movie.original_title === action.payload.original_title
+        );
+        if (!movieIsInList) {
+          state.lists[listIndex].items.push(action.payload);
+        } else {
+          console.log("Already listed.");
+        }
       }
     },
     removeFromList: (state, action) => {
