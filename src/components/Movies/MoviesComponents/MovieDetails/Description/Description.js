@@ -1,18 +1,18 @@
 import PosterImage from "./PosterImage";
-import UserLists from "./UserLists";
 import YoutubeTrailer from "./YoutubeTrailer";
+import UserLists from "./UserLists";
 
 const Description = ({
+  type,
   POSTER,
   TITLE_ALT,
   TITLE,
   GENRES,
-  RELEASE_DATE,
-  DURATION,
+  RELEASE_OR_FIRST_EPISODE,
+  DURATION_OR_LAST_EPISODE,
   RATING,
   DESCRIPTION,
   TRAILER,
-  movie,
 }) => {
   return (
     <>
@@ -21,11 +21,15 @@ const Description = ({
       <div className="flex-details-item flex-description">
         <YoutubeTrailer trailer={TRAILER} />
 
-        <UserLists movie={movie} />
+        <UserLists type={type} />
 
         <h1>{TITLE}</h1>
         <p>{GENRES}</p>
-        <h3>{`${RELEASE_DATE} - ${DURATION} minutes.`}</h3>
+        {type?.original_title ? (
+          <h3>{`${RELEASE_OR_FIRST_EPISODE} - ${DURATION_OR_LAST_EPISODE} minutes.`}</h3>
+        ) : (
+          <h3>{`${RELEASE_OR_FIRST_EPISODE} - ${DURATION_OR_LAST_EPISODE}.`}</h3>
+        )}
         <h3>
           <i className="fa-solid fa-star" />
           {` ${RATING}`}

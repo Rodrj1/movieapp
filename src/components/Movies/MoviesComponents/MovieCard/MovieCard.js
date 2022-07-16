@@ -8,13 +8,14 @@ const MovieCard = ({ movie, onRemove }) => {
   const ALT_TITLE = movie.original_title;
   const POSTER_URL = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
   const RATING = movie.vote_average;
-  const LINK_ID = movie.id;
   const MOVIE_UUID = movie.uuid;
   const TV_SHOW_TITLE = movie.original_name;
+  const MEDIA_TYPE = movie.media_type;
+  const LINK_ID = movie.id;
 
   return (
     <div className="card">
-      <Link to={`/movie/${LINK_ID}`}>
+      <Link to={movie?.original_title ? `/movie/${LINK_ID}` : `/tv/${LINK_ID}`}>
         {movie.poster_path != null ? (
           <img src={POSTER_URL} alt={ALT_TITLE} />
         ) : (

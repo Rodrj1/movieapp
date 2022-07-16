@@ -4,35 +4,33 @@ import MoviesContainerUI from "./MoviesContainerUI";
 import InfiniteScroll from "react-infinite-scroll-component";
 import "./MoviesContainer.css";
 
-/* API calls */
-
-const moviesWithGenresURL =
-  "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=1d2291efea2e84d18b938ffde00ff81b&with_genres=";
-
-/* Component */
-
 const MoviesContainer = ({}) => {
   const [movies, setMovies] = useState([]);
+  const [genre, setGenre] = useState(null);
   const [page, setPage] = useState(1);
   const [searchValue, setSearchValue] = useState("");
-  const [genreFilter, setGenreFilter] = useState(null);
   const [hasMore, setHasMore] = useState(true);
 
-  const moviesURL = `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=1d2291efea2e84d18b938ffde00ff81b&page=${page}`;
+  const MOVIES_URL = `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=1d2291efea2e84d18b938ffde00ff81b&page=${page}`;
 
-  const searchURL = `https://api.themoviedb.org/3/search/movie?&api_key=1d2291efea2e84d18b938ffde00ff81b&query=${searchValue}&page=${page}`;
+  const MOVIES_SEARCH_URL = `https://api.themoviedb.org/3/search/movie?&api_key=1d2291efea2e84d18b938ffde00ff81b&query=${searchValue}&page=${page}`;
+
+  const MOVIES_GENRES_URL = `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=1d2291efea2e84d18b938ffde00ff81b&with_genres=`;
 
   useEffect(() => {
     const fetchMovies = async () => {
       try {
         if (searchValue == "") {
-          const movies = await axios.get(moviesURL);
-          setMovies((prevMovies) => prevMovies.concat(movies.data.results));
+          const getMovies = await axios.get(MOVIES_URL);
+          setMovies((prevMovies) => prevMovies.concat(getMovies.data.results));
         } else {
-            const filters = await axios.get(searchURL);
-            console.log(filters.data);
-            setMovies((prevMovies) => prevMovies.concat(filters.data.results));
-            setHasMore(filters.data.page < filters.data.total_pages);
+          const getSearchedMovie = await axios.get(MOVIES_SEARCH_URL);
+          setMovies((prevMovies) =>
+            prevMovies.concat(getSearchedMovie.data.results)
+          );
+          setHasMore(
+            getSearchedMovie.data.page < getSearchedMovie.data.total_pages
+          );
         }
       } catch (e) {
         console.log(e, "Error fetching Movie/Movies in MoviesContainer.");
@@ -44,23 +42,23 @@ const MoviesContainer = ({}) => {
   useEffect(() => {
     const fetchMoviesByGenre = async () => {
       try {
-        const filterGenre = await axios.get(moviesWithGenresURL + genreFilter);
-        setMovies(filterGenre.data.results);
+        const getMoviesInGenre = await axios.get(MOVIES_GENRES_URL + genre);
+        setMovies(getMoviesInGenre.data.results);
       } catch (e) {
         console.log(
           e,
-          "Error fetching Movie/Movies in MoviesContainer by 'Genre'."
+          "Error fetching Movies in MoviesContainer component by 'Genre'."
         );
       }
     };
     fetchMoviesByGenre();
-  }, [genreFilter]);
+  }, [genre]);
 
   const handleOnSubmit = (evt) => {
     evt.preventDefault();
     setHasMore(true);
     setMovies([]);
-    setPage(current => current - current + 1);
+    setPage((current) => current - current + 1);
   };
 
   const handleOnChange = (evt) => {
@@ -68,7 +66,7 @@ const MoviesContainer = ({}) => {
   };
 
   const handleOnClick = (id) => {
-    setGenreFilter(id);
+    setGenre(id);
   };
 
   if (movies == []) {
@@ -82,7 +80,7 @@ const MoviesContainer = ({}) => {
         hasMore={hasMore}
         next={() => setPage((currentPage) => currentPage + 1)}
         loader={<h1>loading</h1>}
-        style={{width:"100%"}}
+        style={{ width: "100%" }}
       >
         <MoviesContainerUI
           movies={movies}

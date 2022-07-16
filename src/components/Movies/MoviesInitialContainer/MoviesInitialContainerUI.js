@@ -1,8 +1,5 @@
 import "./MoviesInitialContainerUI.css";
-import PopularMovies from "./PopularMovies/PopularMovies";
-import UpcomingMovies from "./UpcomingMovies/UpcomingMovies";
-import TopRatedMovies from "./TopRatedMovies/TopRatedMovies";
-import WeeklyTrends from "./WeeklyTrends/WeeklyTrends";
+import CategorizedMovies from "./CategorizedMovies/CategorizedMovies";
 
 const MoviesInitialContainerUI = ({
   weeklyTrends,
@@ -13,13 +10,13 @@ const MoviesInitialContainerUI = ({
   return (
     <>
       <br />
-      <WeeklyTrends weeklyTrends={weeklyTrends} />
+      <CategorizedMovies movies={weeklyTrends} name="Weekly Trends" />
       <br />
-      <PopularMovies popularMovies={popularMovies} />
+      <CategorizedMovies movies={popularMovies} name="Popular Movies" />
       <br />
-      <UpcomingMovies upcomingMovies={upcomingMovies} />
+      <CategorizedMovies movies={upcomingMovies} name="Upcoming Movies" />
       <br />
-      <TopRatedMovies topRatedMovies={topRatedMovies} />
+      <CategorizedMovies movies={topRatedMovies} name="Top Rated Movies" />
     </>
   );
 };

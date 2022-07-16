@@ -2,24 +2,23 @@ import { formatLanguage } from "../../../../functions/formatLanguage";
 import "./MovieOrTvDetailsUI.css";
 import Description from "./Description/Description";
 
-const MovieDetailsUI = ({ movie, genres, images, cast, reviews }) => {
-  const regexPrice = /\B(?=(\d{3})+(?!\d))/g;
+const TvShowDetailsUI = ({ tvShow, genres, cast, reviews, images }) => {
 
-  const BUDGET = movie.budget?.toString().replace(regexPrice, ",");
-  const DESCRIPTION = movie.overview;
-  const DURATION = movie.runtime;
+  const CHAPTERS = tvShow.number_of_episodes;
+  const DESCRIPTION = tvShow.overview;
+  const DATE_RELEASE = tvShow.first_air_date;
+  const DATE_LAST_AIRED = tvShow.last_air_date;
   const GENRES = genres;
-  const HOMEPAGE = movie.homepage;
-  const LANG_ORIGINAL = movie.original_language;
+  const HOMEPAGE = tvShow.homepage;
+  const LANG_ORIGINAL = tvShow.original_language;
   const LANG_FORMATTED = formatLanguage(LANG_ORIGINAL);
-  const POSTER_URL = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
-  const RATING = movie.vote_average;
-  const RELEASE_DATE = movie.release_date;
-  const TITLE = movie.title;
-  const TITLE_ALT = movie.original_title;
-  const REVENUE = movie.revenue?.toString().replace(regexPrice, ",");
-  const TRAILER = movie?.videos?.results?.find(
-    (video) => video.name === "Official Trailer"
+  const POSTER_URL = `https://image.tmdb.org/t/p/w500/${tvShow.poster_path}`;
+  const RATING = tvShow.vote_average;
+  const SEASONS = tvShow.number_of_seasons;
+  const TITLE = tvShow.original_name;
+  const TITLE_ALT = tvShow.original_name;
+  const TRAILER = tvShow?.videos?.results?.find(
+    (video) => video.official === true
   );
 
   return (
@@ -31,12 +30,12 @@ const MovieDetailsUI = ({ movie, genres, images, cast, reviews }) => {
           TITLE_ALT={TITLE_ALT}
           TITLE={TITLE}
           GENRES={GENRES}
-          RELEASE_OR_FIRST_EPISODE={RELEASE_DATE}
-          DURATION_OR_LAST_EPISODE={DURATION}
+          RELEASE_OR_FIRST_EPISODE={`First aired: ${DATE_RELEASE}`}
+          DURATION_OR_LAST_EPISODE={`Last aired: ${DATE_LAST_AIRED}`}
           RATING={RATING}
           DESCRIPTION={DESCRIPTION}
           TRAILER={TRAILER}
-          type={movie}
+          type={tvShow}
         />
       </div>
       <br />
@@ -58,12 +57,12 @@ const MovieDetailsUI = ({ movie, genres, images, cast, reviews }) => {
               <p>{LANG_FORMATTED}</p>
             </div>
             <div className="flex-desc-item-2">
-              <h3>Budget</h3>
-              <p>${BUDGET}</p>
+              <h3>Number of seasons</h3>
+              <p>{SEASONS}</p>
             </div>
             <div className="flex-desc-item-2">
-              <h3>Revenue</h3>
-              <p>${REVENUE}</p>
+              <h3>Number of chapters</h3>
+              <p>{CHAPTERS}</p>
             </div>
           </div>
         </div>
@@ -85,4 +84,4 @@ const MovieDetailsUI = ({ movie, genres, images, cast, reviews }) => {
   );
 };
 
-export default MovieDetailsUI;
+export default TvShowDetailsUI;

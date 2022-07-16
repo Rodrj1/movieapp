@@ -38,6 +38,7 @@ const MoviesContainerUI = ({
       </form>
       <br />
       <div className="genres-container">{GENRE_FILTERS}</div>
+      <br />
       <div className="movies-container">{MOVIE_CARDS}</div>
     </div>
   );

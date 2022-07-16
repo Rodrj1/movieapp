@@ -99,7 +99,7 @@
         justify-content: center;
     }
 
-    .links {
+    .link li {
         font-size: 1.6rem;
         text-align: center;
         width: 100%;

@@ -7,6 +7,7 @@ import { BrowserRouter, Route, Routes as Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./app/store";
 import MoviesContainer from "./components/Movies/InfinitePopularMovies/MoviesContainer";
+import TvShowDetails from "./components/Movies/MoviesComponents/MovieDetails/TvShowDetails";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/" element={<MoviesInitialContainer />} />
           <Route path="/home" element={<MoviesInitialContainer />} />
           <Route path="/movie/:movieId" element={<MovieDetails />} />
+          <Route path="/tv/:tvShowId" element={<TvShowDetails />} />
           <Route path="/allmovies" element={<MoviesContainer />} />
         </Switch>
       </BrowserRouter>

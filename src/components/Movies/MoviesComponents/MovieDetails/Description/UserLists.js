@@ -3,13 +3,13 @@ import { addToList } from "../../../../../features/tasks/handleLists";
 import { selectLists } from "../../../../../features/tasks/handleLists";
 import { v4 as uuid } from "uuid";
 
-const UserLists = ({ movie }) => {
+const UserLists = ({ type }) => {
   const lists = useSelector(selectLists);
 
   const dispatch = useDispatch();
 
   const handleAddToList = (id) => {
-    dispatch(addToList({...movie, uuid: uuid(), listName: id }));
+    dispatch(addToList({...type, uuid: uuid(), listName: id }));
   };
 
   const LISTS = lists.map((list) => (

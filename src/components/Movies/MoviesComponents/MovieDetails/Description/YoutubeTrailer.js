@@ -21,10 +21,11 @@ const YoutubeTrailer = ({ trailer }) => {
             <i className="fa-solid fa-circle-pause fa-2xl" /> CLOSE
           </button>
         </>
-      ) : null}
-      <button onClick={updateTrailerState} className="btn-trailer-off">
-        <i className="fa-solid fa-circle-play fa-2xl" /> Play Trailer
-      </button>
+      ) : (
+        <button onClick={updateTrailerState} className="btn-trailer-off">
+          <i className="fa-solid fa-circle-play fa-2xl" /> Play Trailer
+        </button>
+      )}
     </>
   );
 };

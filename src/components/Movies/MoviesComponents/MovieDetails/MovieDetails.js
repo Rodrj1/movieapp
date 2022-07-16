@@ -8,18 +8,18 @@ import ReviewUI from "./Review/ReviewUI";
 const MovieDetails = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState([]);
-  const [images, setImages] = useState([]);
-  const [cast, setCast] = useState([]);
-  const [reviews, setReviews] = useState([]);
+  const [movieCast, setMovieCast] = useState([]);
+  const [movieReviews, setMovieReviews] = useState([]);
+  const [movieImages, setMovieImages] = useState([]);
 
   // API calls.
   // ------------------------------------------------------------------------
 
   const MOVIE_URL = `
   https://api.themoviedb.org/3/movie/${movieId}?api_key=1d2291efea2e84d18b938ffde00ff81b&language=en-US&append_to_response=videos`;
-  const CAST_URL = `
+  const MOVIE_CAST_URL = `
   https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=1d2291efea2e84d18b938ffde00ff81b&language=en-US`;
-  const REVIEWS_URL = `https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=4d9c9de3bdf0d3b6837c49c086e3b190`;
+  const MOVIE_REVIEWS_URL = `https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=4d9c9de3bdf0d3b6837c49c086e3b190`;
   const MOVIE_IMAGES_URL = `
   https://api.themoviedb.org/3/movie/${movieId}/images?api_key=1d2291efea2e84d18b938ffde00ff81b&language=en-US&append_to_response=images&include_image_language=en,null`;
   const ORIGINAL_IMG_URL = `https://image.tmdb.org/t/p/original`;
@@ -27,41 +27,40 @@ const MovieDetails = () => {
   // ------------------------------------------------------------------------
 
   useEffect(() => {
-    const fetchMovie = async () => {
+    const fetchMovieData = async () => {
       try {
-        const movieData = await axios.get(MOVIE_URL);
-        const movieImages = await axios.get(MOVIE_IMAGES_URL);
-        const castData = await axios.get(CAST_URL);
-        const reviewsData = await axios.get(REVIEWS_URL);
-        setReviews(reviewsData.data);
-        setCast(castData.data);
-        setMovie(movieData.data);
-        setImages(movieImages.data);
+        const getMovie = await axios.get(MOVIE_URL);
+        const getMovieCast = await axios.get(MOVIE_CAST_URL);
+        const getMovieReviews = await axios.get(MOVIE_REVIEWS_URL);
+        const getMovieImages = await axios.get(MOVIE_IMAGES_URL);
+        setMovie(getMovie.data);
+        setMovieCast(getMovieCast.data);
+        setMovieReviews(getMovieReviews.data);
+        setMovieImages(getMovieImages.data);
       } catch (e) {
-        console.log(e, "Error fetching data in Movie Details.");
+        console.log(e, "Error fetching data in MovieDetails component.");
       }
     };
-    fetchMovie();
+    fetchMovieData();
   }, []);
 
-  const MOVIE_REVIEWS = reviews.results;
-  const REVIEWS = MOVIE_REVIEWS?.map((review) => (
-    <ReviewUI key={review.id} review={review} />
-  ));
-
-  const MOVIE_GENRES = movie.genres;
-  const GENRES = MOVIE_GENRES?.map((genre, index) => {
-    if (MOVIE_GENRES.length != index + 1) {
+  const MOVIE_GENRES = movie?.genres?.map((genre, index) => {
+    if (movie?.genres?.length != index + 1) {
       return `${genre.name}, `;
     } else {
       return `${genre.name}.`;
     }
   });
 
-  const CAST = cast?.cast?.map((cast) => (
+  const MOVIE_CAST = movieCast?.cast?.map((cast) => (
     <CastCard key={cast.id} cast={cast} />
   ));
-  const IMAGES = images?.backdrops?.map((image) => {
+
+  const MOVIE_REVIEWS = movieReviews?.results?.map((review) => (
+    <ReviewUI key={review.id} review={review} />
+  ));
+
+  const MOVIE_IMAGES = movieImages?.backdrops?.map((image) => {
     return (
       <a
         title="See backdrop in full resolution."
@@ -74,17 +73,22 @@ const MovieDetails = () => {
     );
   });
 
-  if (movie == [] || images == []) {
+  if (
+    movie == [] ||
+    movieCast == [] ||
+    movieReviews == [] ||
+    movieImages == []
+  ) {
     return <h1>Loading</h1>;
   }
 
   return (
     <MovieDetailsUI
       movie={movie}
-      genres={GENRES}
-      images={IMAGES}
-      cast={CAST}
-      reviews={REVIEWS}
+      genres={MOVIE_GENRES}
+      cast={MOVIE_CAST}
+      reviews={MOVIE_REVIEWS}
+      images={MOVIE_IMAGES}
     />
   );
 };
