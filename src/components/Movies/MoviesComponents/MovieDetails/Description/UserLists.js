@@ -25,7 +25,7 @@ const UserLists = ({ type }) => {
 
   return (
     <button className="dropdown btn-trailer-off">
-      <i className="fa-solid fa-circle-play fa-2xl" /> Add to Lists
+      <i class="fa-solid fa-list fa-xl"/> Add to Lists
       <div className="dropdown-content">
         {LISTS.length > 0 ? (
           <>

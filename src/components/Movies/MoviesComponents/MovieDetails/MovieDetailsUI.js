@@ -69,7 +69,9 @@ const MovieDetailsUI = ({ movie, genres, images, cast, reviews }) => {
         </div>
 
         <div className="flex-review-container">
-          <div className="flex-column-container">{reviews}</div>
+          <div className="flex-column-container">
+            {reviews}
+          </div>
         </div>
 
         <div className="flex-backdrop-container">

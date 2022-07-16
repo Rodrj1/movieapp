@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import MovieDetailsUI from "./MovieDetailsUI";
 import CastCard from "../CastCard/CastCard";
 import ReviewUI from "./Review/ReviewUI";
+import Loader from "../../../Loader/Loader";
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -79,7 +80,7 @@ const MovieDetails = () => {
     movieReviews == [] ||
     movieImages == []
   ) {
-    return <h1>Loading</h1>;
+    return <Loader />;
   }
 
   return (

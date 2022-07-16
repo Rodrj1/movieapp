@@ -14,28 +14,36 @@ const MovieCard = ({ movie, onRemove }) => {
   const LINK_ID = movie.id;
 
   return (
-    <div className="card">
-      <Link to={movie?.original_title ? `/movie/${LINK_ID}` : `/tv/${LINK_ID}`}>
-        {movie.poster_path != null ? (
-          <img src={POSTER_URL} alt={ALT_TITLE} />
-        ) : (
-          <img src={placeholder} alt={ALT_TITLE} />
-        )}
-      </Link>
-      <h1>{TITLE ? TITLE : TV_SHOW_TITLE}</h1>
-      <h1>
-        <i className="fa-solid fa-star"></i>
-        {RATING}
-      </h1>
-      {MOVIE_UUID ? (
-        <FunctionalButton
-          fn={onRemove}
-          id={MOVIE_UUID}
-          text="DELETE MOVIE"
-          btnClass="list-button"
-        />
-      ) : null}
-    </div>
+    <>
+      {movie ? (
+        <div className="card">
+          <Link
+            to={movie?.original_title ? `/movie/${LINK_ID}` : `/tv/${LINK_ID}`}
+          >
+            {movie.poster_path != null ? (
+              <img src={POSTER_URL} alt={ALT_TITLE} />
+            ) : (
+              <img src={placeholder} alt={ALT_TITLE} />
+            )}
+          </Link>
+          <h1>{TITLE ? TITLE : TV_SHOW_TITLE}</h1>
+          <h1>
+            <i className="fa-solid fa-star"></i>
+            {RATING}
+          </h1>
+          {MOVIE_UUID ? (
+            <FunctionalButton
+              fn={onRemove}
+              id={MOVIE_UUID}
+              text="DELETE MOVIE"
+              btnClass="list-button"
+            />
+          ) : null}
+        </div>
+      ) : (
+        <span class="loader"></span>
+      )}
+    </>
   );
 };
 
