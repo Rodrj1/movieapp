@@ -1,13 +1,10 @@
 .flex-header {
     display: flex;
-    background: linear-gradient(to right,
-            hsl(246, 55%, 10%),
-            hsl(272, 45%, 30%),
-            hsl(308, 35%, 26%));
+    background: linear-gradient(to right, transparent, rgb(62 17 96), transparent);
     font-family: 'Source Sans Pro', sans-serif;
     align-items: center;
     width: 100%;
-    height: 80px;
+    height: 50px;
     font-size: 1.2rem;
     position: sticky;
     top: 0;
@@ -46,7 +43,7 @@
     color: hsla(0, 0%, 93%, 1);
     letter-spacing: 2px;
     margin-left: 10px;
-    
+
 }
 
 .flex-item:nth-child(3) {
@@ -85,7 +82,7 @@
         height: 200px;
         position: absolute;
         justify-content: center;
-        top: 80px;
+        top: 48px;
         left: -100%;
         opacity: 1;
         transition: all .3s ease-in-out;

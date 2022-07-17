@@ -2,11 +2,11 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    color: black;
+    color: white;
     min-height: 250px;
     width: 250px;
     text-align: center;
-    background-color: white;
+    background-color: transparent;
     margin: 20px;
 }
 

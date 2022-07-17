@@ -3,7 +3,7 @@ import { v4 as uuid } from "uuid";
 import { useSwitchTvMovie } from "../../../../hooks/useSwitchTvMovie";
 import { useEffect, useState } from "react";
 
-const CategorizedMovies = ({ movies, name, category, media }) => {
+const CategorizedMovies = ({ movies, name, category, media, cl, cl2 }) => {
   const { changeMediaData, changeCategoryName, refreshedData } =
     useSwitchTvMovie();
 
@@ -17,7 +17,7 @@ const CategorizedMovies = ({ movies, name, category, media }) => {
   ));
 
   const handleMediaData = () => {
-    if (name != "Weekly Trends") {
+    if (name != "Popular This Week") {
       changeMediaData(category, currentMedia);
       const switchMedia = currentMedia == "Movies" ? "TV-Shows" : "Movies";
       setCurrentMedia(switchMedia);
@@ -37,17 +37,21 @@ const CategorizedMovies = ({ movies, name, category, media }) => {
   }
 
   return (
-    <div className="filter-main-page">
-      <p>{currentCategoryName}</p>
-      {name != "Weekly Trends" ? (
-        <button className="category-button" onClick={handleMediaData}>
-          Look for {currentMedia == "Movies" ? "TV-Shows" : "Movies"}
-        </button>
-      ) : null}
-      <div className="filter-main-page-container">
-        {!newDataLoaded
-          ? INITIAL_MOVIE_CARDS
-          : currentData.map((data) => <MovieCard key={uuid()} movie={data} />)}
+    <div className="filter-body">
+      <div className={`filter-main-page ${cl2}`}>
+        <p>{currentCategoryName}</p>
+        {name != "Popular This Week" ? (
+          <button className="category-button" onClick={handleMediaData}>
+            Look for {currentMedia == "Movies" ? "TV-Shows" : "Movies"}
+          </button>
+        ) : null}
+        <div className={`filter-main-page-container ${cl}`}>
+          {!newDataLoaded
+            ? INITIAL_MOVIE_CARDS
+            : currentData.map((data) => (
+                <MovieCard key={uuid()} movie={data} />
+              ))}
+        </div>
       </div>
     </div>
   );

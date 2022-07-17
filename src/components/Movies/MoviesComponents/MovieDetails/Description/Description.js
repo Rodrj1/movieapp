@@ -14,12 +14,17 @@ const Description = ({
   RATING,
   DESCRIPTION,
   TRAILER,
+  HOMEPAGE,
 }) => {
   return (
     <>
       <PosterImage POSTER={POSTER} TITLE_ALT={TITLE_ALT} />
 
       <div className="flex-details-item flex-description">
+        <a title="Visit Homepage" href={HOMEPAGE} target="_blank">
+          VISIT OFFICIAL WEBSITE <i className="fas fa-link" />
+        </a>
+
         {TITLE ? <YoutubeTrailer trailer={TRAILER} /> : <Loader />}
 
         {TITLE ? <UserLists type={type} /> : <Loader />}

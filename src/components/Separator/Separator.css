@@ -1,0 +1,19 @@
+.separator-to-bottom, .separator-to-header {
+    background: linear-gradient(to bottom, 
+    rgb(62 17 96), 
+    rgb(3 3 40));
+}
+
+.separator-to-bottom, .separator-to-top {
+    height: 150px;
+}
+
+.separator-to-top {
+    background: linear-gradient(to top, 
+    rgb(62 17 96), 
+    rgb(3 3 40));
+}
+
+.separator-to-header {
+    height: 50px;
+}

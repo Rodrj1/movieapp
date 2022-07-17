@@ -1,9 +1,9 @@
 import { formatLanguage } from "../../../../functions/formatLanguage";
 import "./MovieOrTvDetailsUI.css";
 import Description from "./Description/Description";
+import SeparatorDetails from "../../../Separator/SeparatorDetails";
 
 const TvShowDetailsUI = ({ tvShow, genres, cast, reviews, images }) => {
-
   const CHAPTERS = tvShow.number_of_episodes;
   const DESCRIPTION = tvShow.overview;
   const DATE_RELEASE = tvShow.first_air_date;
@@ -23,7 +23,7 @@ const TvShowDetailsUI = ({ tvShow, genres, cast, reviews, images }) => {
 
   return (
     <>
-      <br />
+      <SeparatorDetails separatorClass="separator-to-bottom" />
       <div className="flex-details">
         <Description
           POSTER={POSTER_URL}
@@ -38,7 +38,7 @@ const TvShowDetailsUI = ({ tvShow, genres, cast, reviews, images }) => {
           type={tvShow}
         />
       </div>
-      <br />
+      <SeparatorDetails separatorClass="separator-to-top" />
       <div className="main-separator">
         <div className="flex-cast">
           <div className="flex-cast-item flex-column-container">

@@ -3,6 +3,7 @@ import genreData from "../../../data/genreData";
 import FunctionalButton from "../../buttons/FunctionalButton";
 import "./MoviesContainerUI.css";
 import { v4 as uuid } from "uuid";
+import SeparatorDetails from "../../Separator/SeparatorDetails";
 
 const MoviesContainerUI = ({
   movies,
@@ -25,18 +26,17 @@ const MoviesContainerUI = ({
 
   return (
     <div className="movie-column-container">
-      <br />
+      <SeparatorDetails separatorClass="separator-to-header" />
       <form onSubmit={handleOnSubmit} className="search-movie-container">
-        <h1>WELCOME TO MOVIESRC.</h1>
-        <h3>Look out for trending movies and TV shows.</h3>
+        <h1 className="search-item">WELCOME TO MOVIESRC.</h1>
         <input
-          className="search"
+          className="search search-item"
           type="search"
           placeholder="Search for a movie or TV show..."
           onChange={handleOnChange}
         />
       </form>
-      <br />
+      <SeparatorDetails separatorClass="separator-to-bottom" />
       <div className="genres-container">{GENRE_FILTERS}</div>
       <br />
       <div className="movies-container">{MOVIE_CARDS}</div>

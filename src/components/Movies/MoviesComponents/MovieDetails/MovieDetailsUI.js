@@ -1,6 +1,7 @@
 import { formatLanguage } from "../../../../functions/formatLanguage";
 import "./MovieOrTvDetailsUI.css";
 import Description from "./Description/Description";
+import SeparatorDetails from "../../../Separator/SeparatorDetails";
 
 const MovieDetailsUI = ({ movie, genres, images, cast, reviews }) => {
   const regexPrice = /\B(?=(\d{3})+(?!\d))/g;
@@ -24,7 +25,7 @@ const MovieDetailsUI = ({ movie, genres, images, cast, reviews }) => {
 
   return (
     <>
-      <br />
+      <SeparatorDetails separatorClass="separator-to-bottom" />
       <div className="flex-details">
         <Description
           POSTER={POSTER_URL}
@@ -36,10 +37,11 @@ const MovieDetailsUI = ({ movie, genres, images, cast, reviews }) => {
           RATING={RATING}
           DESCRIPTION={DESCRIPTION}
           TRAILER={TRAILER}
+          HOMEPAGE={HOMEPAGE}
           type={movie}
         />
       </div>
-      <br />
+      <SeparatorDetails separatorClass="separator-to-top" />
       <div className="main-separator">
         <div className="flex-cast">
           <div className="flex-cast-item flex-column-container">

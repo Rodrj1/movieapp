@@ -78,7 +78,7 @@ const MoviesContainer = ({}) => {
       <InfiniteScroll
         dataLength={movies.length}
         hasMore={hasMore}
-        next={() => setPage((currentPage) => currentPage + 1)}
+        next={() => {setPage((currentPage) => currentPage + 1)}}
         loader={<h1>Loading</h1>}
         style={{ width: "100%" }}
       >

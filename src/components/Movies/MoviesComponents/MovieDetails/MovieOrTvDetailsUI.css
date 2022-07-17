@@ -10,14 +10,11 @@ h3 {
 
 .flex-details {
     display: flex;
-    width: 70%;
+    width: 100%;
     margin: auto;
     min-height: 500px;
     align-items: center;
-    background: linear-gradient(to right,
-            hsl(246, 55%, 10%),
-            hsl(308, 35%, 26%));
-
+    background: rgb(3 3 40);
     position: relative;
 }
 
@@ -43,6 +40,27 @@ h3 {
     border-radius: 20px;
 }
 
+.flex-details a {
+    color: white;
+    font-size: 1.9rem;
+    text-decoration: none;
+    transition: .3s ease-in-out;
+    font-weight: 900;
+    width: 380px;
+    border-bottom: 2px solid hsl(272, 63%, 69%);;
+}
+
+.flex-details a:visited {
+    color: white;
+    text-decoration: none;
+}
+
+.flex-details a:hover {
+    color: hsl(272, 63%, 69%);
+    text-decoration: none;
+}
+
+
 .flex-description {
     display: flex;
     flex-direction: column;
@@ -62,9 +80,10 @@ h3 {
 }
 
 .main-separator {
-    width: 90%;
+    width: 100%;
     margin: auto;
-    background-color: white;
+    background: linear-gradient(to bottom, rgb(62 17 96), rgb(3 3 40));
+    color: white;
 }
 
 .flex-cast, .flex-backdrop-container, .flex-review-container {
@@ -262,9 +281,11 @@ h3 {
         margin-top: 25px;
         margin-bottom: 0;
     }
+
     .main-separator {
         width: 100%;
     }
+
     .flex-cast {
         flex-direction: column;
     }
