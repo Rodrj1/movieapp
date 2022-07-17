@@ -10,7 +10,6 @@ const MovieCard = ({ movie, onRemove }) => {
   const RATING = movie.vote_average;
   const MOVIE_UUID = movie.uuid;
   const TV_SHOW_TITLE = movie.original_name;
-  const MEDIA_TYPE = movie.media_type;
   const LINK_ID = movie.id;
 
   return (
@@ -29,7 +28,7 @@ const MovieCard = ({ movie, onRemove }) => {
           <h1>{TITLE ? TITLE : TV_SHOW_TITLE}</h1>
           <h1>
             <i className="fa-solid fa-star"></i>
-            {RATING}
+            {parseFloat(RATING).toFixed(1)}
           </h1>
           {MOVIE_UUID ? (
             <FunctionalButton
