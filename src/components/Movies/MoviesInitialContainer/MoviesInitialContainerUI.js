@@ -2,13 +2,16 @@ import "./MoviesInitialContainerUI.css";
 import CategorizedMovies from "./CategorizedMovies/CategorizedMovies";
 import SeparatorDetails from "../../Separator/SeparatorDetails";
 import FrontContent from "./FrontContent/FrontContent";
+import LatestShow from "./LatestShow/LatestShow";
 
 const MoviesInitialContainerUI = ({
   weeklyTrends,
   popularMovies,
   upcomingMovies,
   topRatedMovies,
+  airingToday
 }) => {
+
   return (
     <>
       <SeparatorDetails separatorClass="separator-to-header" />
@@ -22,6 +25,8 @@ const MoviesInitialContainerUI = ({
         cl="weekly"
         cl2="weekly-container"
       />
+      <SeparatorDetails separatorClass="separator-to-bottom" />
+      <LatestShow shows={airingToday} />
       <SeparatorDetails separatorClass="separator-to-bottom" />
       <CategorizedMovies
         movies={popularMovies}

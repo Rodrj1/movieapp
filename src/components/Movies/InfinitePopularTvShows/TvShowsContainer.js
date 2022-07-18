@@ -1,35 +1,36 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import MoviesContainerUI from "./MoviesContainerUI";
+import MoviesContainerUI from "./TvShowsContainerUI";
 import InfiniteScroll from "react-infinite-scroll-component";
-import "./MoviesContainer.css";
+import "../InfinitePopularMovies/MoviesContainer.css";
+import TvShowsContainerUI from "./TvShowsContainerUI";
 
-const MoviesContainer = ({}) => {
-  const [movies, setMovies] = useState([]);
+const TvShowsContainer = ({}) => {
+  const [tvShows, setTvShows] = useState([]);
   const [genre, setGenre] = useState(null);
   const [page, setPage] = useState(1);
   const [searchValue, setSearchValue] = useState("");
   const [hasMore, setHasMore] = useState(true);
 
-  const MOVIES_URL = `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=1d2291efea2e84d18b938ffde00ff81b&page=${page}`;
+  const MOVIES_URL = `https://api.themoviedb.org/3/discover/tv?sort_by=popularity.desc&api_key=1d2291efea2e84d18b938ffde00ff81b&page=${page}`;
 
-  const MOVIES_SEARCH_URL = `https://api.themoviedb.org/3/search/movie?&api_key=1d2291efea2e84d18b938ffde00ff81b&query=${searchValue}&page=${page}`;
+  const MOVIES_SEARCH_URL = `https://api.themoviedb.org/3/search/tv?&api_key=1d2291efea2e84d18b938ffde00ff81b&query=${searchValue}&page=${page}`;
 
-  const MOVIES_GENRES_URL = `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=1d2291efea2e84d18b938ffde00ff81b&with_genres=`;
+  const MOVIES_GENRES_URL = `https://api.themoviedb.org/3/discover/tv?sort_by=popularity.desc&api_key=1d2291efea2e84d18b938ffde00ff81b&with_genres=`;
 
   useEffect(() => {
     const fetchMovies = async () => {
       try {
         if (searchValue == "") {
-          const getMovies = await axios.get(MOVIES_URL);
-          setMovies((prevMovies) => prevMovies.concat(getMovies.data.results));
+          const getTvShows = await axios.get(MOVIES_URL);
+          setTvShows((prevMovies) => prevMovies.concat(getTvShows.data.results));
         } else {
-          const getSearchedMovie = await axios.get(MOVIES_SEARCH_URL);
-          setMovies((prevMovies) =>
-            prevMovies.concat(getSearchedMovie.data.results)
+          const getSearchedTvShow = await axios.get(MOVIES_SEARCH_URL);
+          setTvShows((prevMovies) =>
+            prevMovies.concat(getSearchedTvShow.data.results)
           );
           setHasMore(
-            getSearchedMovie.data.page < getSearchedMovie.data.total_pages
+            getSearchedTvShow.data.page < getSearchedTvShow.data.total_pages
           );
         }
       } catch (e) {
@@ -42,8 +43,8 @@ const MoviesContainer = ({}) => {
   useEffect(() => {
     const fetchMoviesByGenre = async () => {
       try {
-        const getMoviesInGenre = await axios.get(MOVIES_GENRES_URL + genre);
-        setMovies(getMoviesInGenre.data.results);
+        const getTvShowsInGenre = await axios.get(MOVIES_GENRES_URL + genre);
+        setTvShows(getTvShowsInGenre.data.results);
       } catch (e) {
         console.log(
           e,
@@ -57,7 +58,7 @@ const MoviesContainer = ({}) => {
   const handleOnSubmit = (evt) => {
     evt.preventDefault();
     setHasMore(true);
-    setMovies([]);
+    setTvShows([]);
     setPage((current) => current - current + 1);
   };
 
@@ -69,14 +70,14 @@ const MoviesContainer = ({}) => {
     setGenre(id);
   };
 
-  if (movies == []) {
+  if (tvShows == []) {
     return <h1>Loading</h1>;
   }
 
   return (
     <div className="child infinite-scroll-container">
       <InfiniteScroll
-        dataLength={movies.length}
+        dataLength={tvShows.length}
         hasMore={hasMore}
         next={() => {
           setPage((currentPage) => currentPage + 1);
@@ -84,8 +85,8 @@ const MoviesContainer = ({}) => {
         loader={<h1>Loading</h1>}
         style={{ width: "100%" }}
       >
-        <MoviesContainerUI
-          movies={movies}
+        <TvShowsContainerUI
+          tvShows={tvShows}
           handleOnSubmit={handleOnSubmit}
           handleOnChange={handleOnChange}
           handleOnClick={handleOnClick}
@@ -97,4 +98,4 @@ const MoviesContainer = ({}) => {
   );
 };
 
-export default MoviesContainer;
+export default TvShowsContainer;

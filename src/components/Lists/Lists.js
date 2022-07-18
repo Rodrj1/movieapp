@@ -4,7 +4,6 @@ import { v4 as uuid } from "uuid";
 import { selectLists } from "../../features/tasks/handleLists";
 import ListMaker from "./ListMaker/ListMaker";
 import ListItem from "./ListItem/ListItem";
-import SeparatorDetails from "../Separator/SeparatorDetails";
 
 const Lists = () => {
   const lists = useSelector(selectLists);

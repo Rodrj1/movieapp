@@ -1,12 +1,12 @@
 import MovieCard from "../MoviesComponents/MovieCard/MovieCard";
 import genreData from "../../../data/genreData";
 import FunctionalButton from "../../buttons/FunctionalButton";
-import "./MoviesContainerUI.css";
+import "../InfinitePopularMovies/MoviesContainerUI.css";
 import { v4 as uuid } from "uuid";
 import SeparatorDetails from "../../Separator/SeparatorDetails";
 
-const MoviesContainerUI = ({
-  movies,
+const TvShowsContainerUI = ({
+  tvShows,
   handleOnSubmit,
   handleOnChange,
   handleOnClick,
@@ -20,7 +20,7 @@ const MoviesContainerUI = ({
       text={genre.name}
     />
   ));
-  const MOVIE_CARDS = movies?.map((movie) => (
+  const MOVIE_CARDS = tvShows?.map((movie) => (
     <MovieCard key={uuid()} movie={movie} />
   ));
 
@@ -28,11 +28,11 @@ const MoviesContainerUI = ({
     <div className="movie-column-container">
       <SeparatorDetails separatorClass="separator-to-header" />
       <form onSubmit={handleOnSubmit} className="search-movie-container">
-        <h1 className="search-item">Search for your favorite movies.</h1>
+        <h1 className="search-item">Search for your favorite TV shows.</h1>
         <input
           className="search search-item"
           type="search"
-          placeholder="Search for a movie..."
+          placeholder="Search for TV show..."
           onChange={handleOnChange}
         />
       </form>
@@ -44,4 +44,4 @@ const MoviesContainerUI = ({
   );
 };
 
-export default MoviesContainerUI;
+export default TvShowsContainerUI;

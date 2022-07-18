@@ -8,6 +8,7 @@ import { Provider } from "react-redux";
 import { store } from "./app/store";
 import MoviesContainer from "./components/Movies/InfinitePopularMovies/MoviesContainer";
 import TvShowDetails from "./components/Movies/MoviesComponents/MovieDetails/TvShowDetails";
+import TvShowsContainer from "./components/Movies/InfinitePopularTvShows/TvShowsContainer";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/movie/:movieId" element={<MovieDetails />} />
           <Route path="/tv/:tvShowId" element={<TvShowDetails />} />
           <Route path="/allmovies" element={<MoviesContainer />} />
+          <Route path="/alltvshows" element={<TvShowsContainer />} />
         </Switch>
       </BrowserRouter>
     </Provider>

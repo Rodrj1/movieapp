@@ -35,12 +35,16 @@
     align-items: flex-start;
     align-content: space-around;
     font-size: 2rem;
-    height: 500px;
+    height: 200px;
     width: 100%;
     margin: auto;
     text-align: center;
     color: white;
     background: linear-gradient(to top, rgb(62 17 96), rgb(3 3 40));
+}
+
+.search-movie-container h1{
+    font-weight: 600;
 }
 
 .search-item {

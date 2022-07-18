@@ -1,4 +1,7 @@
-
+.list-container {
+    height: 100vh;
+    background: linear-gradient(to top, rgb(62 17 96), rgb(3 3 40));
+}
 
 .list {
     width: 70%;

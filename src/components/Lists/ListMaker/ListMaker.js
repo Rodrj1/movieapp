@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createList } from "../../../features/tasks/handleLists";
 import { v4 as uuid } from "uuid";
+import SeparatorDetails from "../../Separator/SeparatorDetails";
 
 const ListMaker = () => {
   const dispatch = useDispatch();
@@ -17,29 +18,32 @@ const ListMaker = () => {
 
   const handleOnClick = (e) => {
     e.preventDefault();
-    dispatch(createList({...list, items:[], uuid: uuid()}));
+    dispatch(createList({ ...list, items: [], uuid: uuid() }));
   };
 
   return (
-    <form className="list-maker">
-      <h1>CREATE NEW LIST</h1>
-      <input
-        onChange={handleOnChange}
-        name="name"
-        type="text"
-        placeholder="LIST NAME"
-      />
+    <>
+      <SeparatorDetails separatorClass="separator-to-header" />
+      <form className="list-maker">
+        <h1>CREATE NEW LIST</h1>
+        <input
+          onChange={handleOnChange}
+          name="name"
+          type="text"
+          placeholder="LIST NAME"
+        />
 
-      <textarea
-        onChange={handleOnChange}
-        name="description"
-        placeholder="DESCRIPTION"
-      />
+        <textarea
+          onChange={handleOnChange}
+          name="description"
+          placeholder="DESCRIPTION"
+        />
 
-      <button onClick={handleOnClick} className="list-button">
-        SAVE LIST
-      </button>
-    </form>
+        <button onClick={handleOnClick} className="list-button">
+          SAVE LIST
+        </button>
+      </form>
+    </>
   );
 };
 

@@ -12,7 +12,7 @@ const Header = () => {
   return (
     <div className="flex-header">
       <Link to="/" className="link">
-        <h1 className="flex-item">MoviesRC</h1>
+        <h1 className="flex-item">ARC Fiction</h1>
       </Link>
       <div className="btn-menu" onClick={handleOnClick}>
         <i className="fa-solid fa-bars fa-xl" />
@@ -23,7 +23,10 @@ const Header = () => {
           <li>Lists</li>
         </Link>
         <Link to="/allmovies" className="link">
-          <li>View All Movies</li>
+          <li>Movies</li>
+        </Link>
+        <Link to="/alltvshows" className="link">
+          <li>TV shows</li>
         </Link>
       </ul>
     </div>

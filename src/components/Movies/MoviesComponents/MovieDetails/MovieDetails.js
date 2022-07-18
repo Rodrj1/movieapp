@@ -9,20 +9,13 @@ import Loader from "../../../Loader/Loader";
 const MovieDetails = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState([]);
-  const [movieCast, setMovieCast] = useState([]);
-  const [movieReviews, setMovieReviews] = useState([]);
-  const [movieImages, setMovieImages] = useState([]);
 
   // API calls.
   // ------------------------------------------------------------------------
 
   const MOVIE_URL = `
-  https://api.themoviedb.org/3/movie/${movieId}?api_key=1d2291efea2e84d18b938ffde00ff81b&language=en-US&append_to_response=videos`;
-  const MOVIE_CAST_URL = `
-  https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=1d2291efea2e84d18b938ffde00ff81b&language=en-US`;
-  const MOVIE_REVIEWS_URL = `https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=4d9c9de3bdf0d3b6837c49c086e3b190`;
-  const MOVIE_IMAGES_URL = `
-  https://api.themoviedb.org/3/movie/${movieId}/images?api_key=1d2291efea2e84d18b938ffde00ff81b&language=en-US&append_to_response=images&include_image_language=en,null`;
+  https://api.themoviedb.org/3/movie/${movieId}?api_key=1d2291efea2e84d18b938ffde00ff81b&language=en-US&include_image_language&append_to_response=videos,images,credits,reviews&include_image_language=en,null`;
+
   const ORIGINAL_IMG_URL = `https://image.tmdb.org/t/p/original`;
 
   // ------------------------------------------------------------------------
@@ -31,13 +24,7 @@ const MovieDetails = () => {
     const fetchMovieData = async () => {
       try {
         const getMovie = await axios.get(MOVIE_URL);
-        const getMovieCast = await axios.get(MOVIE_CAST_URL);
-        const getMovieReviews = await axios.get(MOVIE_REVIEWS_URL);
-        const getMovieImages = await axios.get(MOVIE_IMAGES_URL);
         setMovie(getMovie.data);
-        setMovieCast(getMovieCast.data);
-        setMovieReviews(getMovieReviews.data);
-        setMovieImages(getMovieImages.data);
       } catch (e) {
         console.log(e, "Error fetching data in MovieDetails component.");
       }
@@ -53,15 +40,15 @@ const MovieDetails = () => {
     }
   });
 
-  const MOVIE_CAST = movieCast?.cast?.map((cast) => (
+  const MOVIE_CAST = movie?.credits?.cast?.map((cast) => (
     <CastCard key={cast.id} cast={cast} />
   ));
 
-  const MOVIE_REVIEWS = movieReviews?.results?.map((review) => (
+  const MOVIE_REVIEWS = movie?.reviews?.results?.map((review) => (
     <ReviewUI key={review.id} review={review} />
   ));
 
-  const MOVIE_IMAGES = movieImages?.backdrops?.map((image) => {
+  const MOVIE_IMAGES = movie?.images?.backdrops?.map((image) => {
     return (
       <a
         title="See backdrop in full resolution."
@@ -74,12 +61,7 @@ const MovieDetails = () => {
     );
   });
 
-  if (
-    movie == [] ||
-    movieCast == [] ||
-    movieReviews == [] ||
-    movieImages == []
-  ) {
+  if (movie == []) {
     return <Loader />;
   }
 
