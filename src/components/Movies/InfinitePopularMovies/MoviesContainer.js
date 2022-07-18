@@ -25,6 +25,7 @@ const MoviesContainer = ({}) => {
           setMovies((prevMovies) => prevMovies.concat(getMovies.data.results));
         } else {
           const getSearchedMovie = await axios.get(MOVIES_SEARCH_URL);
+          console.log(getSearchedMovie.data);
           setMovies((prevMovies) =>
             prevMovies.concat(getSearchedMovie.data.results)
           );

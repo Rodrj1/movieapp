@@ -234,4 +234,7 @@
         width: 100%;
         border: none;
     }
+    .grid-latest:hover {
+        border: none;
+    }
 }
