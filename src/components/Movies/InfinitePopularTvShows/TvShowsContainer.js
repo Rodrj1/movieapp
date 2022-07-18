@@ -6,10 +6,11 @@ import "../InfinitePopularMovies/MoviesContainer.css";
 import TvShowsContainerUI from "./TvShowsContainerUI";
 
 const TvShowsContainer = ({}) => {
-  const [tvShows, setTvShows] = useState([]);
+  const [movies, setMovies] = useState([]);
   const [genre, setGenre] = useState(null);
   const [page, setPage] = useState(1);
   const [searchValue, setSearchValue] = useState("");
+  const [searchedValue, setSearchedValue] = useState("");
   const [hasMore, setHasMore] = useState(true);
 
   const MOVIES_URL = `https://api.themoviedb.org/3/discover/tv?sort_by=popularity.desc&api_key=1d2291efea2e84d18b938ffde00ff81b&page=${page}`;
@@ -19,65 +20,83 @@ const TvShowsContainer = ({}) => {
   const MOVIES_GENRES_URL = `https://api.themoviedb.org/3/discover/tv?sort_by=popularity.desc&api_key=1d2291efea2e84d18b938ffde00ff81b&with_genres=`;
 
   useEffect(() => {
-    const fetchMovies = async () => {
-      try {
-        if (searchValue == "") {
-          const getTvShows = await axios.get(MOVIES_URL);
-          setTvShows((prevMovies) => prevMovies.concat(getTvShows.data.results));
-        } else {
-          const getSearchedTvShow = await axios.get(MOVIES_SEARCH_URL);
-          setTvShows((prevMovies) =>
-            prevMovies.concat(getSearchedTvShow.data.results)
-          );
-          setHasMore(
-            getSearchedTvShow.data.page < getSearchedTvShow.data.total_pages
+    if (searchedValue == "" && genre == null) {
+      const fetchMovies = async () => {
+        try {
+          const getMovies = await axios.get(MOVIES_URL);
+          setMovies((prevMovies) => prevMovies.concat(getMovies.data.results));
+          setHasMore(getMovies.data.page < getMovies.data.total_pages);
+        } catch (e) {
+          console.log(e, "Error fetching Movie/Movies in MoviesContainer.");
+        }
+      };
+      fetchMovies();
+    } else if (searchedValue != "" && genre == null) {
+      const fetchMovies = async () => {
+        try {
+          const getMovies = await axios.get(MOVIES_SEARCH_URL);
+          setMovies((prevMovies) => prevMovies.concat(getMovies.data.results));
+          setHasMore(getMovies.data.page < getMovies.data.total_pages);
+        } catch (e) {
+          console.log(
+            e,
+            "Error fetching Movie/Movies by searching in MoviesContainer."
           );
         }
-      } catch (e) {
-        console.log(e, "Error fetching Movie/Movies in MoviesContainer.");
-      }
-    };
-    fetchMovies();
-  }, [page]);
+      };
+      fetchMovies();
+    }
+  }, [searchedValue, page]);
 
   useEffect(() => {
-    const fetchMoviesByGenre = async () => {
-      try {
-        const getTvShowsInGenre = await axios.get(MOVIES_GENRES_URL + genre);
-        setTvShows(getTvShowsInGenre.data.results);
-      } catch (e) {
-        console.log(
-          e,
-          "Error fetching Movies in MoviesContainer component by 'Genre'."
-        );
-      }
-    };
-    fetchMoviesByGenre();
-  }, [genre]);
-
-  const handleOnSubmit = (evt) => {
-    evt.preventDefault();
-    setHasMore(true);
-    setTvShows([]);
-    setPage((current) => current - current + 1);
-  };
+    if (genre != null) {
+      const fetchMovies = async () => {
+        try {
+          const getMovies = await axios.get(
+            MOVIES_GENRES_URL + genre + `&page=${page}`
+          );
+          setMovies((prevMovies) => prevMovies.concat(getMovies.data.results));
+          setHasMore(getMovies.data.page < getMovies.data.total_pages);
+        } catch (e) {
+          console.log(
+            e,
+            "Error fetching Movie/Movies by genre in MoviesContainer."
+          );
+        }
+      };
+      fetchMovies();
+    }
+  }, [genre, page]);
 
   const handleOnChange = (evt) => {
     setSearchValue(evt.target.value);
   };
 
-  const handleOnClick = (id) => {
-    setGenre(id);
+  const handleOnSubmit = (evt) => {
+    evt.preventDefault();
+    setGenre(null);
+    setSearchedValue(searchValue);
+    setHasMore(true);
+    setMovies([]);
+    setPage((current) => current - current + 1);
   };
 
-  if (tvShows == []) {
+  const handleOnClick = (id) => {
+    setGenre(id);
+    setHasMore(true);
+    setMovies([]);
+    setPage((current) => current - current + 1);
+  };
+
+
+  if (movies == []) {
     return <h1>Loading</h1>;
   }
 
   return (
     <div className="child infinite-scroll-container">
       <InfiniteScroll
-        dataLength={tvShows.length}
+        dataLength={movies?.length}
         hasMore={hasMore}
         next={() => {
           setPage((currentPage) => currentPage + 1);
@@ -86,7 +105,7 @@ const TvShowsContainer = ({}) => {
         style={{ width: "100%" }}
       >
         <TvShowsContainerUI
-          tvShows={tvShows}
+          tvShows={movies}
           handleOnSubmit={handleOnSubmit}
           handleOnChange={handleOnChange}
           handleOnClick={handleOnClick}
