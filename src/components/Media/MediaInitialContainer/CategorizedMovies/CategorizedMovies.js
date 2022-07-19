@@ -1,4 +1,4 @@
-import MovieCard from "../../MoviesComponents/MovieCard/MovieCard";
+import MediaCard from "../../MediaComponent/MediaCard/MediaCard";
 import { v4 as uuid } from "uuid";
 import { useSwitchTvMovie } from "../../../../hooks/useSwitchTvMovie";
 import { useEffect, useState } from "react";
@@ -13,7 +13,7 @@ const CategorizedMovies = ({ movies, name, category, media, cl, cl2 }) => {
   const [newDataLoaded, setNewDataLoaded] = useState(false);
 
   const INITIAL_MOVIE_CARDS = movies?.map((movie) => (
-    <MovieCard key={uuid()} movie={movie} />
+    <MediaCard key={uuid()} media={movie} />
   ));
 
   const handleMediaData = () => {
@@ -49,7 +49,7 @@ const CategorizedMovies = ({ movies, name, category, media, cl, cl2 }) => {
           {!newDataLoaded
             ? INITIAL_MOVIE_CARDS
             : currentData.map((data) => (
-                <MovieCard key={uuid()} movie={data} />
+                <MediaCard key={uuid()} media={data} />
               ))}
         </div>
       </div>

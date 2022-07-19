@@ -3,21 +3,21 @@ import "./MovieOrTvDetailsUI.css";
 import Description from "./Description/Description";
 import SeparatorDetails from "../../../Separator/SeparatorDetails";
 
-const MovieDetailsUI = ({ movie, genres, images, cast, reviews }) => {
+const MovieDetailsUI = ({ movie, genres, images, cast, reviews, similar }) => {
   const regexPrice = /\B(?=(\d{3})+(?!\d))/g;
 
   const BUDGET = movie.budget?.toString().replace(regexPrice, ",");
-  const DESCRIPTION = movie.overview;
-  const DURATION = movie.runtime;
+  const DESCRIPTION = movie?.overview;
+  const DURATION = movie?.runtime;
   const GENRES = genres;
-  const HOMEPAGE = movie.homepage;
-  const LANG_ORIGINAL = movie.original_language;
+  const HOMEPAGE = movie?.homepage;
+  const LANG_ORIGINAL = movie?.original_language;
   const LANG_FORMATTED = formatLanguage(LANG_ORIGINAL);
   const POSTER_URL = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
-  const RATING = movie.vote_average;
-  const RELEASE_DATE = movie.release_date;
-  const TITLE = movie.title;
-  const TITLE_ALT = movie.original_title;
+  const RATING = movie?.vote_average;
+  const RELEASE_DATE = movie?.release_date;
+  const TITLE = movie?.title;
+  const TITLE_ALT = movie?.original_title;
   const REVENUE = movie.revenue?.toString().replace(regexPrice, ",");
   const TRAILER = movie?.videos?.results?.find(
     (video) => video.name === "Official Trailer"
@@ -25,6 +25,7 @@ const MovieDetailsUI = ({ movie, genres, images, cast, reviews }) => {
 
   return (
     <>
+      {console.log(similar)}
       <SeparatorDetails separatorClass="separator-to-bottom" />
       <div className="flex-details">
         <Description
@@ -51,11 +52,6 @@ const MovieDetailsUI = ({ movie, genres, images, cast, reviews }) => {
 
           <div className="flex-cast-item flex-description-2">
             <div className="flex-desc-item-2">
-              <a title="Visit Homepage" href={HOMEPAGE} target="_blank">
-                <i className="fas fa-link fa-xl" />
-              </a>
-            </div>
-            <div className="flex-desc-item-2">
               <h3>Original Language</h3>
               <p>{LANG_FORMATTED}</p>
             </div>
@@ -70,10 +66,16 @@ const MovieDetailsUI = ({ movie, genres, images, cast, reviews }) => {
           </div>
         </div>
 
+        <div
+          style={{ marginTop: "20px", width: "88%" }}
+          className="filter-main-page"
+        >
+          <h1>Similar movies you might like...</h1>
+          <div className="filter-main-page-container">{similar}</div>
+        </div>
+
         <div className="flex-review-container">
-          <div className="flex-column-container">
-            {reviews}
-          </div>
+          <div className="flex-column-container">{reviews}</div>
         </div>
 
         <div className="flex-backdrop-container">

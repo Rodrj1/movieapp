@@ -82,7 +82,7 @@ h3 {
 .main-separator {
     width: 100%;
     margin: auto;
-    background: linear-gradient(to bottom, rgb(62 17 96), rgb(3 3 40));
+    background: linear-gradient(to left, rgb(62 17 96), rgb(3 3 40));
     color: white;
 }
 

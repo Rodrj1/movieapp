@@ -1,4 +1,4 @@
-import MoviesInitialContainerUI from "./MoviesInitialContainerUI";
+import MoviesInitialContainerUI from "./MediasInitialContainerUI";
 import { useState, useEffect } from "react";
 import axios from "axios";
 

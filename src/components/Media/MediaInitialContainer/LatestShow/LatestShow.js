@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 const LatestShow = ({ shows }) => {
   const [index, setIndex] = useState(0);
 
-  console.log(shows);
   const SHOW_NAME = shows[index]?.name;
   const SHOW_DESCRIPTION = shows[index]?.overview;
   const SHOW_POSTER = `https://image.tmdb.org/t/p/w500/${shows[index]?.poster_path}`;

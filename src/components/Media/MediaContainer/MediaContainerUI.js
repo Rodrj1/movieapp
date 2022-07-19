@@ -1,4 +1,4 @@
-import MovieCard from "../MoviesComponents/MovieCard/MovieCard";
+import MediaCard from "../MediaComponent/MediaCard/MediaCard";
 import { movieGenres, tvGenres } from "../../../data/genreData";
 import FunctionalButton from "../../buttons/FunctionalButton";
 import "./MediaContainerUI.css";
@@ -36,7 +36,7 @@ const MediaContainerUI = ({
         )));
 
   const MOVIE_CARDS = mediaData?.map((movie) => (
-    <MovieCard key={uuid()} movie={movie} />
+    <MediaCard key={uuid()} media={movie} />
   ));
 
   const mainH1Description =

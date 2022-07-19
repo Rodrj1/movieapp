@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import MovieCard from "../../Movies/MoviesComponents/MovieCard/MovieCard";
+import MediaCard from "../../Media/MediaComponent/MediaCard/MediaCard";
 import FunctionalButton from "../../buttons/FunctionalButton";
 import {
   removeFromList,
@@ -18,9 +18,9 @@ const ListItem = ({ name, description, items, uuid }) => {
   };
 
   const LISTED_MOVIES = items.map((movie) => (
-    <MovieCard
+    <MediaCard
       key={movie.uuid}
-      movie={movie}
+      media={movie}
       onRemove={() => handleRemoveFromList(movie.uuid)}
     />
   ));

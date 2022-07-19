@@ -1,25 +1,24 @@
-import "./MovieCard.css";
+import "./MediaCard.css";
 import placeholder from "../../../../placeholder.png";
 import FunctionalButton from "../../../buttons/FunctionalButton";
 import { Link } from "react-router-dom";
 
-const MovieCard = ({ movie, onRemove }) => {
-  const TITLE = movie.title;
-  const ALT_TITLE = movie.original_title;
-  const POSTER_URL = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
-  const RATING = movie.vote_average;
-  const MOVIE_UUID = movie.uuid;
-  const TV_SHOW_TITLE = movie.original_name;
-  const LINK_ID = movie.id;
+const MediaCard = ({ media, onRemove }) => {
+  const TITLE = media.title;
+  const ALT_TITLE = media.original_title;
+  const POSTER_URL = `https://image.tmdb.org/t/p/w500/${media.poster_path}`;
+  const MOVIE_UUID = media.uuid;
+  const TV_SHOW_TITLE = media.original_name;
+  const LINK_ID = media.id;
 
   return (
     <>
-      {movie ? (
+      {media ? (
         <div className="card">
           <Link
-            to={movie?.original_title ? `/movie/${LINK_ID}` : `/tv/${LINK_ID}`}
+            to={media?.original_title ? `/media/${LINK_ID}` : `/tv/${LINK_ID}`}
           >
-            {movie.poster_path != null ? (
+            {media.poster_path != null ? (
               <img src={POSTER_URL} alt={ALT_TITLE} />
             ) : (
               <img src={placeholder} alt={ALT_TITLE} />
@@ -30,7 +29,7 @@ const MovieCard = ({ movie, onRemove }) => {
             <FunctionalButton
               fn={onRemove}
               id={MOVIE_UUID}
-              text="DELETE MOVIE"
+              text="DELETE media"
               btnClass="list-button"
             />
           ) : null}
@@ -42,4 +41,4 @@ const MovieCard = ({ movie, onRemove }) => {
   );
 };
 
-export default MovieCard;
+export default MediaCard;

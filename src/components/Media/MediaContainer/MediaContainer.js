@@ -3,7 +3,7 @@ import axios from "axios";
 import InfiniteScroll from "react-infinite-scroll-component";
 import "./MediaContainer.css";
 import MediaContainerUI from "./MediaContainerUI";
-import { useGetGenreData } from "../../../api/apiCalls";
+import { useGetGenreData } from "../../../hooks/useGetGenreData";
 import CategoryMedia from "./CategoryMedia";
 import SeparatorDetails from "../../Separator/SeparatorDetails";
 
@@ -68,10 +68,6 @@ const MediaContainer = ({ media }) => {
       fetchMovies();
     }
   }, [searchedValue, page]);
-
-  useEffect(() => {
-    console.log(mediaByGenre);
-  }, [mediaByGenre]);
 
   useEffect(() => {
     if (genre != null) {
@@ -171,7 +167,7 @@ const MediaContainer = ({ media }) => {
       <SeparatorDetails separatorClass="separator-to-bottom" />
       <CategoryMedia
         mediaData={mediaByGenre.scifi}
-        name="Get lost in Sci-Fi or Fantasy"
+        name="Break the line between fantasy and reality"
       />
       <div className="child infinite-scroll-container">
         <InfiniteScroll

@@ -4,10 +4,10 @@ import Lists from "./components/Lists/Lists";
 import { BrowserRouter, Route, Routes as Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./app/store";
-import MoviesInitialContainer from "./components/Movies/MoviesInitialContainer/MoviesInitialContainer";
-import MovieDetails from "./components/Movies/MoviesComponents/MovieDetails/MovieDetails";
-import TvShowDetails from "./components/Movies/MoviesComponents/MovieDetails/TvShowDetails";
-import MediaContainer from "./components/Movies/MediaContainer/MediaContainer";
+import MoviesInitialContainer from "./components/Media/MediaInitialContainer/MediaInitialContainer";
+import MovieDetails from "./components/Media/MediaComponent/MovieDetails/MovieDetails";
+import TvShowDetails from "./components/Media/MediaComponent/MovieDetails/TvShowDetails";
+import MediaContainer from "./components/Media/MediaContainer/MediaContainer";
 
 function App() {
   return (

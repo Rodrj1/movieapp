@@ -21,6 +21,8 @@ const TvShowDetailsUI = ({ tvShow, genres, cast, reviews, images }) => {
     (video) => video.official === true
   );
 
+  console.log(tvShow);
+
   return (
     <>
       <SeparatorDetails separatorClass="separator-to-bottom" />
@@ -35,6 +37,7 @@ const TvShowDetailsUI = ({ tvShow, genres, cast, reviews, images }) => {
           RATING={RATING}
           DESCRIPTION={DESCRIPTION}
           TRAILER={TRAILER}
+          HOMEPAGE={HOMEPAGE}
           type={tvShow}
         />
       </div>

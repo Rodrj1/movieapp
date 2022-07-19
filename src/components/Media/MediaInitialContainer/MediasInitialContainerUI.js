@@ -1,4 +1,4 @@
-import "./MoviesInitialContainerUI.css";
+import "./MediaInitialContainerUI.css";
 import CategorizedMovies from "./CategorizedMovies/CategorizedMovies";
 import SeparatorDetails from "../../Separator/SeparatorDetails";
 import FrontContent from "./FrontContent/FrontContent";

@@ -5,16 +5,20 @@ import MovieDetailsUI from "./MovieDetailsUI";
 import CastCard from "../CastCard/CastCard";
 import ReviewUI from "./Review/ReviewUI";
 import Loader from "../../../Loader/Loader";
+import MediaCard from "../MediaCard/MediaCard";
 
 const MovieDetails = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState([]);
+  const [similar, setSimilar] = useState([]);
 
   // API calls.
   // ------------------------------------------------------------------------
 
   const MOVIE_URL = `
-  https://api.themoviedb.org/3/movie/${movieId}?api_key=1d2291efea2e84d18b938ffde00ff81b&language=en-US&include_image_language&append_to_response=videos,images,credits,reviews&include_image_language=en,null`;
+  https://api.themoviedb.org/3/movie/${movieId}?api_key=1d2291efea2e84d18b938ffde00ff81b&language=en-US&include_image_language&append_to_response=videos,images,credits,reviews,similar&include_image_language=en,null`;
+
+  const MOVIE_UR2L = `https://api.themoviedb.org/3/movie/${movieId}/similar?api_key=1d2291efea2e84d18b938ffde00ff81b&language=en-US&page=1`
 
   const ORIGINAL_IMG_URL = `https://image.tmdb.org/t/p/original`;
 
@@ -24,7 +28,9 @@ const MovieDetails = () => {
     const fetchMovieData = async () => {
       try {
         const getMovie = await axios.get(MOVIE_URL);
+        const getSimilar = await axios.get(MOVIE_UR2L);
         setMovie(getMovie.data);
+        setSimilar(getSimilar.data);
       } catch (e) {
         console.log(e, "Error fetching data in MovieDetails component.");
       }
@@ -61,6 +67,10 @@ const MovieDetails = () => {
     );
   });
 
+  const MOVIE_SIMILAR = similar?.results?.map((similar) => (
+    <MediaCard media={similar} key={similar.id} />
+  ));
+
   if (movie == []) {
     return <Loader />;
   }
@@ -72,6 +82,7 @@ const MovieDetails = () => {
       cast={MOVIE_CAST}
       reviews={MOVIE_REVIEWS}
       images={MOVIE_IMAGES}
+      similar={MOVIE_SIMILAR}
     />
   );
 };
