@@ -31,6 +31,9 @@ const MediaContainer = ({ media }) => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     if (searchedValue == "" && genre == null) {
       const fetchMovies = async () => {
         try {
@@ -128,10 +131,7 @@ const MediaContainer = ({ media }) => {
     media == "movie"
       ? "The best Musicals that will get you to sing"
       : "Shows that will keep you watching to the end";
-  const MUSIC_OR_CRIME_CATEGORY_CLASS =
-    media == "movie"
-      ? "music"
-      : "crime";
+  const MUSIC_OR_CRIME_CATEGORY_CLASS = media == "movie" ? "music" : "crime";
   const ROMANCE_OR_ACTION_CATEGORY =
     media == "movie"
       ? "Check out the best Romances out there!"
