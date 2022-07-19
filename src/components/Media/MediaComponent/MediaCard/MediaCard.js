@@ -16,7 +16,7 @@ const MediaCard = ({ media, onRemove }) => {
       {media ? (
         <div className="card">
           <Link
-            to={media?.original_title ? `/media/${LINK_ID}` : `/tv/${LINK_ID}`}
+            to={media?.original_title ? `/movie/${LINK_ID}` : `/tv/${LINK_ID}`}
           >
             {media.poster_path != null ? (
               <img src={POSTER_URL} alt={ALT_TITLE} />
