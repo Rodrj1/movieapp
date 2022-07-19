@@ -26,10 +26,6 @@ const MovieCard = ({ movie, onRemove }) => {
             )}
           </Link>
           <h1>{TITLE ? TITLE : TV_SHOW_TITLE}</h1>
-          <h1>
-            <i className="fa-solid fa-star"></i>
-            {parseFloat(RATING).toFixed(1)}
-          </h1>
           {MOVIE_UUID ? (
             <FunctionalButton
               fn={onRemove}

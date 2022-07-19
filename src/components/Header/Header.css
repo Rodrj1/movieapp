@@ -49,7 +49,7 @@
 .flex-item:nth-child(3) {
     text-decoration: none;
     list-style: none;
-    flex-basis: 85%;
+    flex-basis: 50%;
     font-weight: 600;
 }
 

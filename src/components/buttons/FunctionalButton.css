@@ -10,7 +10,7 @@
 }
 
 .genre-button {
-    height: 30px;
+    min-height: 30px;
     align-items: center;
     background:transparent;
 }

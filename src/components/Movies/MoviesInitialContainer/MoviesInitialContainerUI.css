@@ -7,7 +7,7 @@
     font-size: 2rem;
     color: white;
     height: 90vh;
-    background: linear-gradient(to top, rgb(62 17 96), rgb(3 3 40));
+    background: linear-gradient(to left, rgb(62 17 96), rgb(3 3 40));
 }
 
 .front-content h1, .front-content h2{
@@ -43,7 +43,7 @@
 
 .filter-body {
     width: 100%;
-    background: linear-gradient(to top, rgb(62 17 96), rgb(3 3 40));
+    background: linear-gradient(to left, rgb(62 17 96), rgb(3 3 40));
 }
 
 .filter-main-page {

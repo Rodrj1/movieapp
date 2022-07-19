@@ -22,10 +22,10 @@ const Header = () => {
         <Link to="/lists" className="link">
           <li>Lists</li>
         </Link>
-        <Link to="/allmovies" className="link">
+        <Link to="/movies" className="link">
           <li>Movies</li>
         </Link>
-        <Link to="/alltvshows" className="link">
+        <Link to="/tvshows" className="link">
           <li>TV shows</li>
         </Link>
       </ul>

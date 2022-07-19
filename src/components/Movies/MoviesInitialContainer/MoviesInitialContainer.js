@@ -27,6 +27,7 @@ const MoviesInitialContainer = () => {
   const [airingToday, setAiringToday] = useState([]);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const fetchMovies = async () => {
       try {
         const getWeeklyTrends = await axios.get(TRENDS_WEEKLY_URL);

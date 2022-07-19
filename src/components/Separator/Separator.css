@@ -1,5 +1,5 @@
 .separator-to-bottom, .separator-to-header {
-    background: linear-gradient(to bottom, 
+    background: linear-gradient(to left, 
     rgb(62 17 96), 
     rgb(3 3 40));
 }
@@ -9,7 +9,7 @@
 }
 
 .separator-to-top {
-    background: linear-gradient(to top, 
+    background: linear-gradient(to left, 
     rgb(62 17 96), 
     rgb(3 3 40));
 }
