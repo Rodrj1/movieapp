@@ -1,15 +1,18 @@
-import "./App.css";
 import Header from "./components/Header/Header";
 import Lists from "./components/Lists/Lists";
+import { useState } from "react";
 import { BrowserRouter, Route, Routes as Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./app/store";
 import MoviesInitialContainer from "./components/Media/MediaInitialContainer/MediaInitialContainer";
-import MovieDetails from "./components/Media/MediaComponent/MovieDetails/MovieDetails";
-import TvShowDetails from "./components/Media/MediaComponent/MovieDetails/TvShowDetails";
+import MediaDetails from "./components/Media/MediaComponent/MediaDetails/MediaDetails";
 import MediaContainer from "./components/Media/MediaContainer/MediaContainer";
+import "./App.css";
 
 function App() {
+  const [updateMovieMedia, setUpdateMovieMedia] = useState(true);
+  const [updateTvMedia, setUpdateTvMedia] = useState(false);
+
   return (
     <Provider store={store}>
       <BrowserRouter>
@@ -19,8 +22,26 @@ function App() {
           <Route path="/lists" element={<Lists />} />
           <Route path="/" element={<MoviesInitialContainer />} />
           <Route path="/home" element={<MoviesInitialContainer />} />
-          <Route path="/movie/:movieId" element={<MovieDetails />} />
-          <Route path="/tv/:tvShowId" element={<TvShowDetails />} />
+          <Route
+            path="/movie/:movieId"
+            element={
+              <MediaDetails
+                media="movie"
+                key={updateMovieMedia}
+                setUpdateMovieMedia={setUpdateMovieMedia}
+              />
+            }
+          />
+          <Route
+            path="/tv/:tvShowId"
+            element={
+              <MediaDetails
+                media="tv"
+                key={updateTvMedia}
+                setUpdateTvMedia={setUpdateTvMedia}
+              />
+            }
+          />
           <Route
             path="/movies"
             element={<MediaContainer media="movie" key={1} />}

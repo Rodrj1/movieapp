@@ -1,9 +1,9 @@
 import MediaCard from "../MediaComponent/MediaCard/MediaCard";
 import { movieGenres, tvGenres } from "../../../data/genreData";
 import FunctionalButton from "../../buttons/FunctionalButton";
-import "./MediaContainerUI.css";
 import { v4 as uuid } from "uuid";
 import SeparatorDetails from "../../Separator/SeparatorDetails";
+import "./MediaContainerUI.css";
 
 const MediaContainerUI = ({
   mediaData,

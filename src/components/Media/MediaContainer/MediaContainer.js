@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import InfiniteScroll from "react-infinite-scroll-component";
-import "./MediaContainer.css";
 import MediaContainerUI from "./MediaContainerUI";
 import { useGetGenreData } from "../../../hooks/useGetGenreData";
 import CategoryMedia from "./CategoryMedia";
 import SeparatorDetails from "../../Separator/SeparatorDetails";
+import "./MediaContainer.css";
 
 const MediaContainer = ({ media }) => {
   const [mediaData, setMediaData] = useState([]);

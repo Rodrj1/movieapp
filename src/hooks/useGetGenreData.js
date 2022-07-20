@@ -37,7 +37,6 @@ export const useGetGenreData = ({ media }) => {
         const getMediaMusic = await axios.get(MEDIA_MUSIC);
         const getMediaRomance = await axios.get(MEDIA_ROMANCE);
         const getMediaSciFi = await axios.get(MEDIA_SCIFI);
-        console.log(getMediaSciFi.data, 2);
         setMediaByGenre({
           animation: getMediaAnimation.data.results,
           comedy: getMediaComedy.data.results,
