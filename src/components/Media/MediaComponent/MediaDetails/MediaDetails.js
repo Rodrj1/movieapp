@@ -28,10 +28,12 @@ const MediaDetails = ({ media, setUpdateMovieMedia, setUpdateTvMedia }) => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    if (media == "movie") {
-      setUpdateMovieMedia((update) => !update);
-    } else {
-      setUpdateTvMedia(update => !update);
+    if (mediaDetails != []) {
+      if (media == "movie") {
+        setUpdateMovieMedia((update) => !update);
+      } else {
+        setUpdateTvMedia((update) => !update);
+      }
     }
   }, [movieId, tvShowId]);
 
