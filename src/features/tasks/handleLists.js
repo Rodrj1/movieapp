@@ -24,7 +24,7 @@ export const handleListsSlice = createSlice({
       if (findList) {
         const listIndex = state.lists.indexOf(findList);
         const movieIsInList = state.lists[listIndex].items.find(
-          (movie) => movie.original_title === action.payload.original_title
+          (movie) => movie.id === action.payload.id
         );
         if (!movieIsInList) {
           state.lists[listIndex].items.push(action.payload);

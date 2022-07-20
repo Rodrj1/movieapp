@@ -27,7 +27,7 @@ const Description = ({
 
         {TITLE ? <YoutubeTrailer trailer={TRAILER} /> : <Loader />}
 
-        {TITLE ? <UserLists type={type} /> : <Loader />}
+        {type ? <UserLists type={type} /> : <Loader />}
 
         <h1>{TITLE ? TITLE : <Loader />}</h1>
         <p>{GENRES ? GENRES : <Loader />}</p>

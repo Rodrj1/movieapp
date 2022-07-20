@@ -12,6 +12,7 @@ const MediaCard = ({ media, onRemove }) => {
 
   // Only if it is a MediaCard in a user list.
   const MOVIE_UUID = media.uuid;
+  const mediaType = media?.title ? "MOVIE" : "TV SHOW";
   //
 
   return (
@@ -32,7 +33,7 @@ const MediaCard = ({ media, onRemove }) => {
             <FunctionalButton
               fn={onRemove}
               id={MOVIE_UUID}
-              text="DELETE media"
+              text={`DELETE ${mediaType}`}
               btnClass="list-button"
             />
           ) : null}
