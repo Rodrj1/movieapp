@@ -26,7 +26,7 @@ const MediaDetails = ({ media, setUpdateMovieMedia, setUpdateTvMedia }) => {
 
   // ------------------------------------------------------------------------
 
-  useEffect(() => {
+  /*useEffect(() => {
     window.scrollTo(0, 0);
     if (mediaDetails != []) {
       if (media == "movie") {
@@ -35,7 +35,7 @@ const MediaDetails = ({ media, setUpdateMovieMedia, setUpdateTvMedia }) => {
         setUpdateTvMedia((update) => !update);
       }
     }
-  }, [movieId, tvShowId]);
+  }, [movieId, tvShowId]);*/
 
   useEffect(() => {
     const fetchMovieData = async () => {
