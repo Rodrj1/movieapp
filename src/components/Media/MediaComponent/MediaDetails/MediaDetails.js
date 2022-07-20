@@ -12,6 +12,7 @@ const MediaDetails = ({ media, setUpdateMovieMedia, setUpdateTvMedia }) => {
   const { movieId, tvShowId } = useParams();
   const [mediaDetails, setMediaDetails] = useState([]);
   const [similar, setSimilar] = useState([]);
+  const [loaded, setLoaded] = useState(false);
   const LINK_ID = media == "movie" ? movieId : tvShowId;
 
   // API calls.
@@ -26,16 +27,19 @@ const MediaDetails = ({ media, setUpdateMovieMedia, setUpdateTvMedia }) => {
 
   // ------------------------------------------------------------------------
 
-  /*useEffect(() => {
+  useEffect(() => {
     window.scrollTo(0, 0);
-    if (mediaDetails != []) {
+    if (loaded == true) {
       if (media == "movie") {
         setUpdateMovieMedia((update) => !update);
       } else {
         setUpdateTvMedia((update) => !update);
       }
     }
-  }, [movieId, tvShowId]);*/
+    if (loaded == false) {
+      setLoaded(true);
+    }
+  }, [movieId, tvShowId]);
 
   useEffect(() => {
     const fetchMovieData = async () => {
