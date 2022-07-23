@@ -1,5 +1,5 @@
 import "./MediaInitialContainerUI.css";
-import CategorizedMovies from "./CategorizedMovies/CategorizedMovies";
+import CategorizedMedia from "./CategorizedMedia/CategorizedMedia";
 import SeparatorDetails from "../../Separator/SeparatorDetails";
 import FrontContent from "./FrontContent/FrontContent";
 import LatestShow from "./LatestShow/LatestShow";
@@ -17,7 +17,7 @@ const MoviesInitialContainerUI = ({
       <SeparatorDetails separatorClass="separator-to-header" />
       <FrontContent />
       <SeparatorDetails separatorClass="separator-to-bottom" />
-      <CategorizedMovies
+      <CategorizedMedia
         movies={weeklyTrends}
         name="Popular This Week"
         media="Movies"
@@ -28,21 +28,21 @@ const MoviesInitialContainerUI = ({
       <SeparatorDetails separatorClass="separator-to-bottom" />
       <LatestShow shows={airingToday} />
       <SeparatorDetails separatorClass="separator-to-bottom" />
-      <CategorizedMovies
+      <CategorizedMedia
         movies={popularMovies}
         name="Popular Movies"
         media="Movies"
         category="popular"
       />
       <SeparatorDetails separatorClass="separator-to-bottom" />
-      <CategorizedMovies
+      <CategorizedMedia
         movies={upcomingMovies}
         name="Upcoming Movies"
         media="Movies"
         category="upcoming"
       />
       <SeparatorDetails separatorClass="separator-to-bottom" />
-      <CategorizedMovies
+      <CategorizedMedia
         movies={topRatedMovies}
         name="Top Rated Movies"
         media="Movies"

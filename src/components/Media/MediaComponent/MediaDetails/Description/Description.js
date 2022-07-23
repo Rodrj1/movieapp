@@ -2,6 +2,7 @@ import PosterImage from "./PosterImage";
 import YoutubeTrailer from "./YoutubeTrailer";
 import UserLists from "./UserLists";
 import Loader from "../../../../Loader/Loader";
+import { useState } from "react";
 
 const Description = ({
   type,
@@ -12,10 +13,12 @@ const Description = ({
   RELEASE_OR_FIRST_EPISODE,
   DURATION_OR_LAST_EPISODE,
   RATING,
-  DESCRIPTION,
+  OVERVIEW,
   TRAILER,
   HOMEPAGE,
 }) => {
+  const [playTrailer, setPlayTrailer] = useState(false);
+
   return (
     <>
       <PosterImage POSTER={POSTER} TITLE_ALT={TITLE_ALT} />
@@ -25,9 +28,21 @@ const Description = ({
           VISIT OFFICIAL WEBSITE <i className="fas fa-link" />
         </a>
 
-        {TITLE ? <YoutubeTrailer trailer={TRAILER} /> : <Loader />}
+        {TITLE ? (
+          <YoutubeTrailer
+            trailer={TRAILER}
+            playTrailer={playTrailer}
+            setPlayTrailer={setPlayTrailer}
+          />
+        ) : (
+          <Loader />
+        )}
 
-        {type ? <UserLists type={type} /> : <Loader />}
+        {POSTER && OVERVIEW && TITLE ? (
+          <UserLists type={type} playTrailer={playTrailer} />
+        ) : (
+          <Loader />
+        )}
 
         <h1>{TITLE ? TITLE : <Loader />}</h1>
         <p>{GENRES ? GENRES : <Loader />}</p>
@@ -53,7 +68,7 @@ const Description = ({
           {RATING ? ` ${RATING}` : <Loader />}
         </h3>
         <h3>Overview</h3>
-        <p>{DESCRIPTION ? DESCRIPTION : <Loader />}</p>
+        <p>{OVERVIEW ? OVERVIEW : <Loader />}</p>
       </div>
     </>
   );

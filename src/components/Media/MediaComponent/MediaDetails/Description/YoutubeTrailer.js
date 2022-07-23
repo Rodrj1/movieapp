@@ -1,8 +1,6 @@
-import { useState } from "react";
 import YouTube from "react-youtube";
 
-const YoutubeTrailer = ({ trailer }) => {
-  const [playTrailer, setPlayTrailer] = useState(false);
+const YoutubeTrailer = ({ trailer, playTrailer, setPlayTrailer }) => {
 
   const updateTrailerState = () => {
     setPlayTrailer((play) => !play);

@@ -3,7 +3,7 @@ import { v4 as uuid } from "uuid";
 import { useSwitchTvMovie } from "../../../../hooks/useSwitchTvMovie";
 import { useEffect, useState } from "react";
 
-const CategorizedMovies = ({ movies, name, category, media, cl, cl2 }) => {
+const CategorizedMedia = ({ movies, name, category, media, cl, cl2 }) => {
   const { changeMediaData, changeCategoryName, refreshedData } =
     useSwitchTvMovie();
 
@@ -48,7 +48,7 @@ const CategorizedMovies = ({ movies, name, category, media, cl, cl2 }) => {
         <div className={`filter-main-page-container ${cl}`}>
           {!newDataLoaded
             ? INITIAL_MOVIE_CARDS
-            : currentData.map((data) => (
+            : currentData?.map((data) => (
                 <MediaCard key={uuid()} media={data} />
               ))}
         </div>
@@ -57,4 +57,4 @@ const CategorizedMovies = ({ movies, name, category, media, cl, cl2 }) => {
   );
 };
 
-export default CategorizedMovies;
+export default CategorizedMedia;

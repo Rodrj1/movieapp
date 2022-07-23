@@ -1,7 +1,7 @@
 import "./ListMaker.css";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { createList } from "../../../features/tasks/handleLists";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { createList, selectLists } from "../../../features/tasks/handleLists";
 import { v4 as uuid } from "uuid";
 import SeparatorDetails from "../../Separator/SeparatorDetails";
 

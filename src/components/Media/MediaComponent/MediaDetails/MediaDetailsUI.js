@@ -11,12 +11,12 @@ const MediaDetailsUI = ({ media, genres, images, cast, reviews, similar }) => {
   const DATE_LAST_AIRED = `Last aired in: ${media?.last_air_date}`;
   const SEASONS = media?.number_of_seasons;
   const BUDGET = media.budget?.toString().replace(regexPrice, ",");
-  const DESCRIPTION = media?.overview;
   const DURATION = media?.runtime;
   const GENRES = genres;
   const HOMEPAGE = media?.homepage;
   const LANG_ORIGINAL = media?.original_language;
   const LANG_FORMATTED = formatLanguage(LANG_ORIGINAL);
+  const OVERVIEW = media?.overview;
   const POSTER_URL = `https://image.tmdb.org/t/p/w500/${media.poster_path}`;
   const RATING = media?.vote_average ? media?.vote_average : "NOT RATED";
   const TITLE = media?.title ? media?.title : media?.original_name;
@@ -51,7 +51,7 @@ const MediaDetailsUI = ({ media, genres, images, cast, reviews, similar }) => {
               RELEASE_OR_FIRST_EPISODE={RELEASE_OR_FIRST_EPISODE}
               DURATION_OR_LAST_EPISODE={DURATION_OR_LAST_EPISODE}
               RATING={RATING}
-              DESCRIPTION={DESCRIPTION}
+              OVERVIEW={OVERVIEW}
               TRAILER={MOVIE_TRAILER_OR_TV_TRAILER}
               HOMEPAGE={HOMEPAGE}
               type={media}
@@ -71,12 +71,12 @@ const MediaDetailsUI = ({ media, genres, images, cast, reviews, similar }) => {
                   <p>{LANG_FORMATTED}</p>
                 </div>
                 <div className="flex-desc-item-2">
-                  <h3>Budget</h3>
-                  <p>${BUDGET ? BUDGET : SEASONS}</p>
+                  <h3>{BUDGET ? "Budget" : "Seasons"}</h3>
+                  <p>{BUDGET ? `$${BUDGET}` : SEASONS}</p>
                 </div>
                 <div className="flex-desc-item-2">
-                  <h3>Revenue</h3>
-                  <p>${REVENUE ? REVENUE : CHAPTERS}</p>
+                  <h3>{REVENUE ? "Revenue" : "Chapters"}</h3>
+                  <p>{REVENUE ? `$${REVENUE}` : CHAPTERS}</p>
                 </div>
               </div>
             </div>
