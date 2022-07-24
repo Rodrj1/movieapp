@@ -23,10 +23,10 @@ export const handleListsSlice = createSlice({
       );
       if (findList) {
         const listIndex = state.lists.indexOf(findList);
-        const movieIsInList = state.lists[listIndex].items.find(
+        const mediaIsInList = state.lists[listIndex].items.find(
           (movie) => movie.id === action.payload.id
         );
-        if (!movieIsInList) {
+        if (!mediaIsInList) {
           state.lists[listIndex].items.push(action.payload);
         } else {
           console.log("Already listed.");
