@@ -19,13 +19,13 @@ const Header = () => {
       </div>
 
       <ul className={`flex-item ${!openMenu ? "nav-menu active" : "nav-menu"}`}>
-        <Link to="/movies" className="link">
+        <Link to="/movies" className="link" onClick={handleOnClick}>
           <li>Movies</li>
         </Link>
-        <Link to="/tvshows" className="link">
+        <Link to="/tvshows" className="link" onClick={handleOnClick}>
           <li>TV shows</li>
         </Link>
-        <Link to="/lists" className="link">
+        <Link to="/lists" className="link" onClick={handleOnClick}>
           <li>Lists</li>
         </Link>
       </ul>

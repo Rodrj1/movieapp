@@ -94,7 +94,10 @@ const MediaDetailsUI = ({ media, genres, images, cast, reviews, similar }) => {
             </div>
 
             <div className="flex-review-container">
-              <div className="flex-column-container">{reviews}</div>
+              <div className="flex-column-container">
+                <h1>What do people think?</h1>
+                {reviews}
+              </div>
             </div>
 
             <div className="flex-backdrop-container">

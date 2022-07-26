@@ -20,3 +20,13 @@
 .review-container p{
     font-size: 1.1rem;
 }
+
+@media screen and (max-width: 648px) {
+    .review-container p{
+        font-size: 1.2rem;
+        font-weight: 400;
+    }
+    .review-container {
+        height: 130px;
+    }
+}

@@ -93,7 +93,7 @@
     align-items: center;
     height: 60px;
     overflow-y: hidden;
-    overflow-x: auto;
+    overflow-x: auto;     
 }
 
 .search-movie-container {
@@ -134,5 +134,13 @@
 @media screen and (max-width: 648px) {
     .search-movie-container {
         font-size: 1.3rem;
+    }
+
+    .movies-container, .genres-container, .category-main-page {
+        width: 100%;
+    }
+    .category-main-page h1:first-child {
+        text-align: center;
+        font-weight: 600;
     }
 }

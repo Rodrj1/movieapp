@@ -61,7 +61,6 @@ const MediaContainerUI = ({
       </form>
       <SeparatorDetails separatorClass="separator-to-bottom" />
       <div className="genres-container">{GENRE_FILTERS}</div>
-      <br />
       <div className="movies-container">{MOVIE_CARDS}</div>
     </div>
   );

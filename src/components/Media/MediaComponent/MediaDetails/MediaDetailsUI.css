@@ -4,7 +4,7 @@ a:visited {
 }
 
 h3 {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 600;
 }
 
@@ -47,7 +47,8 @@ h3 {
     transition: .3s ease-in-out;
     font-weight: 900;
     width: 380px;
-    border-bottom: 2px solid hsl(272, 63%, 69%);;
+    border-bottom: 2px solid hsl(272, 63%, 69%);
+    ;
 }
 
 .flex-details a:visited {
@@ -254,7 +255,7 @@ h3 {
     }
 
     .flex-details-item:nth-child(1) {
-        text-align: center;
+        text-align: s;
         margin: auto;
     }
 
@@ -289,4 +290,24 @@ h3 {
     .flex-cast {
         flex-direction: column;
     }
+
+    h3 {
+        font-size: 1.6rem;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    .flex-description p {
+        width: 100%;
+        font-size: 1.3rem;
+    }
+    .flex-description h3 {
+        width: 100%;
+    }
+    .btn-trailer-off{
+        width: 100%;
+    }
+    
 }
