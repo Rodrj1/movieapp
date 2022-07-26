@@ -31,9 +31,9 @@ const LatestShow = ({ shows }) => {
         <div className="grid-latest">
           <h1>{SHOW_NAME}</h1>
           <h2>AVAILABLE {SHOW_AIR_DATE}</h2>
-          <p>{SHOW_DESCRIPTION}</p>
+          <p>{SHOW_DESCRIPTION ? SHOW_DESCRIPTION : "Show still needs a description from provider."}</p>
         </div>
-        <div className={`grid-latest latest-main-page-container`}>
+        <div className={`grid-latest`}>
           <Link
             to={`/tv/${SHOW_LINK_ID}`}
           >
@@ -41,7 +41,7 @@ const LatestShow = ({ shows }) => {
           </Link>
         </div>
       </div>
-      <div className="grid-latest">
+      <div className="grid-latest-arrow">
         {index > 0 ? (
           <i
             onClick={handleDecIndex}

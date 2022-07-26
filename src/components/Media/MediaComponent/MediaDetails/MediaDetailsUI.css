@@ -246,7 +246,7 @@ h3 {
     box-shadow: inset 150px 0 50px 0 hsl(246, 55%, 10%);
 }
 
-@media screen and (max-width: 648px) {
+@media screen and (max-width: 730px) {
 
     .flex-details {
         flex-wrap: wrap;
@@ -303,11 +303,13 @@ h3 {
         width: 100%;
         font-size: 1.3rem;
     }
+
     .flex-description h3 {
         width: 100%;
     }
-    .btn-trailer-off{
+
+    .btn-trailer-off {
         width: 100%;
     }
-    
+
 }

@@ -41,8 +41,8 @@ const MediaContainerUI = ({
 
   const mainH1Description =
     media == "movie"
-      ? "Or search yourself for your favorite movies!"
-      : "Or search yourself for your favorite TV shows!";
+      ? "OR SEARCH YOURSELF FOR YOUR FAVORITE MOVIES!"
+      : "OR SEARCH YOURSELF FOR YOUR FAVORITE TV SHOWS!";
 
   const placeholderDescription =
     media == "movie" ? "Search for Movie..." : "Search for TV show...";

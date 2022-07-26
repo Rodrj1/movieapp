@@ -1,5 +1,6 @@
 import MoviesInitialContainerUI from "./MediasInitialContainerUI";
 import { useState, useEffect } from "react";
+import Loader from "../../Loader/Loader";
 import axios from "axios";
 
 // API calls.
@@ -61,15 +62,28 @@ const MoviesInitialContainer = () => {
   }
 
   return (
-    <div>
-      <MoviesInitialContainerUI
-        weeklyTrends={weeklyTrends}
-        popularMovies={popularMovies}
-        upcomingMovies={upcomingMovies}
-        topRatedMovies={topRatedMovies}
-        airingToday={airingToday}
-      />
-    </div>
+    <>
+      {popularMovies &&
+      upcomingMovies &&
+      topRatedMovies &&
+      weeklyTrends &&
+      airingToday ? (
+        <>
+          {" "}
+          <div>
+            <MoviesInitialContainerUI
+              weeklyTrends={weeklyTrends}
+              popularMovies={popularMovies}
+              upcomingMovies={upcomingMovies}
+              topRatedMovies={topRatedMovies}
+              airingToday={airingToday}
+            />
+          </div>
+        </>
+      ) : (
+        <Loader />
+      )}
+    </>
   );
 };
 

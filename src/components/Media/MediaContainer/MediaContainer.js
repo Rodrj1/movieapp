@@ -6,6 +6,7 @@ import { useGetGenreData } from "../../../hooks/useGetGenreData";
 import CategoryMedia from "./CategoryMedia";
 import SeparatorDetails from "../../Separator/SeparatorDetails";
 import "./MediaContainer.css";
+import Loader from "../../Loader/Loader";
 
 const MediaContainer = ({ media }) => {
   const [mediaData, setMediaData] = useState([]);
@@ -135,61 +136,70 @@ const MediaContainer = ({ media }) => {
 
   return (
     <>
-      <SeparatorDetails separatorClass="separator-to-header" />
-      <CategoryMedia
-        mediaData={mediaByGenre.animation}
-        name={ANIMATED_CATEGORY}
-      />
-      <SeparatorDetails separatorClass="separator-to-bottom" />
-      <CategoryMedia mediaData={mediaByGenre.comedy} name="Trending Comedies" />
-      <SeparatorDetails separatorClass="separator-to-bottom" />
-      <CategoryMedia
-        mediaData={mediaByGenre.drama}
-        name="Top Dramas you need to see"
-      />
-      <SeparatorDetails separatorClass="separator-to-bottom" />
-      <CategoryMedia
-        mediaData={mediaByGenre.horror}
-        name={HORROR_OR_MISTERY_CATEGORY}
-      />
-      <SeparatorDetails separatorClass="separator-to-bottom" />
-      <CategoryMedia
-        mediaData={mediaByGenre.music}
-        name={MUSIC_OR_CRIME_CATEGORY}
-        cl={MUSIC_OR_CRIME_CATEGORY_CLASS}
-        cl2="music-container"
-      />
-      <SeparatorDetails separatorClass="separator-to-bottom" />
-      <CategoryMedia
-        mediaData={mediaByGenre.romance}
-        name={ROMANCE_OR_ACTION_CATEGORY}
-      />
-      <SeparatorDetails separatorClass="separator-to-bottom" />
-      <CategoryMedia
-        mediaData={mediaByGenre.scifi}
-        name="Break the line between fantasy and reality"
-      />
-      <div className="child infinite-scroll-container">
-        <InfiniteScroll
-          dataLength={mediaData?.length}
-          hasMore={hasMore}
-          next={() => {
-            setPage((currentPage) => currentPage + 1);
-          }}
-          loader={<h1>Loading</h1>}
-          style={{ width: "100%" }}
-        >
-          <MediaContainerUI
-            mediaData={mediaData}
-            media={media}
-            handleOnSubmit={handleOnSubmit}
-            handleOnChange={handleOnChange}
-            handleOnClick={handleOnClick}
-            hasMore={hasMore}
-            setPage={setPage}
+      {mediaData ? (
+        <>
+          <SeparatorDetails separatorClass="separator-to-header" />
+          <CategoryMedia
+            mediaData={mediaByGenre.animation}
+            name={ANIMATED_CATEGORY}
           />
-        </InfiniteScroll>
-      </div>
+          <SeparatorDetails separatorClass="separator-to-bottom" />
+          <CategoryMedia
+            mediaData={mediaByGenre.comedy}
+            name="Trending Comedies"
+          />
+          <SeparatorDetails separatorClass="separator-to-bottom" />
+          <CategoryMedia
+            mediaData={mediaByGenre.drama}
+            name="Top Dramas you need to see"
+          />
+          <SeparatorDetails separatorClass="separator-to-bottom" />
+          <CategoryMedia
+            mediaData={mediaByGenre.horror}
+            name={HORROR_OR_MISTERY_CATEGORY}
+          />
+          <SeparatorDetails separatorClass="separator-to-bottom" />
+          <CategoryMedia
+            mediaData={mediaByGenre.music}
+            name={MUSIC_OR_CRIME_CATEGORY}
+            cl={MUSIC_OR_CRIME_CATEGORY_CLASS}
+            cl2="music-container"
+          />
+          <SeparatorDetails separatorClass="separator-to-bottom" />
+          <CategoryMedia
+            mediaData={mediaByGenre.romance}
+            name={ROMANCE_OR_ACTION_CATEGORY}
+          />
+          <SeparatorDetails separatorClass="separator-to-bottom" />
+          <CategoryMedia
+            mediaData={mediaByGenre.scifi}
+            name="Break the line between fantasy and reality"
+          />
+          <div className="child infinite-scroll-container">
+            <InfiniteScroll
+              dataLength={mediaData?.length}
+              hasMore={hasMore}
+              next={() => {
+                setPage((currentPage) => currentPage + 1);
+              }}
+              loader={<h1>Loading</h1>}
+              style={{ width: "100%" }}
+            >
+              <MediaContainerUI
+                mediaData={mediaData}
+                media={media}
+                handleOnSubmit={handleOnSubmit}
+                handleOnChange={handleOnChange}
+                handleOnClick={handleOnClick}
+                hasMore={hasMore}
+                setPage={setPage}
+              />
+            </InfiniteScroll>
+          </div>
+        </>
+      ) : (
+        <Loader />
+      )}
     </>
   );
 };

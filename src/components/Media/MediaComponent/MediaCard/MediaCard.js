@@ -7,7 +7,7 @@ const MediaCard = ({ media, onRemove }) => {
   const TITLE = media.title;
   const ALT_TITLE = media.original_title;
   const POSTER_URL = `https://image.tmdb.org/t/p/w500/${media.poster_path}`;
-  const TV_SHOW_TITLE = media.original_name;
+  const TV_SHOW_TITLE = media.name;
   const LINK_ID = media.id;
 
   // Only if it is a MediaCard in a user list.

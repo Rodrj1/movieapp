@@ -9,9 +9,8 @@ const MoviesInitialContainerUI = ({
   popularMovies,
   upcomingMovies,
   topRatedMovies,
-  airingToday
+  airingToday,
 }) => {
-
   return (
     <>
       <SeparatorDetails separatorClass="separator-to-header" />

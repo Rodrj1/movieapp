@@ -29,9 +29,12 @@
     color: hsl(54, 74%, 49%);
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 648px) {
     .card {
         justify-content: center;
         align-content: center;
+    }
+    .card img {
+        width: 100%;
     }
 }

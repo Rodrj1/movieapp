@@ -6,7 +6,7 @@ import Loader from "../../../Loader/Loader";
 
 const MediaDetailsUI = ({ media, genres, images, cast, reviews, similar }) => {
   const regexPrice = /\B(?=(\d{3})+(?!\d))/g;
-
+console.log(media);
   const CHAPTERS = media?.number_of_episodes;
   const DATE_LAST_AIRED = `Last aired in: ${media?.last_air_date}`;
   const SEASONS = media?.number_of_seasons;
@@ -19,7 +19,7 @@ const MediaDetailsUI = ({ media, genres, images, cast, reviews, similar }) => {
   const OVERVIEW = media?.overview;
   const POSTER_URL = `https://image.tmdb.org/t/p/w500/${media.poster_path}`;
   const RATING = media?.vote_average ? media?.vote_average : "NOT RATED";
-  const TITLE = media?.title ? media?.title : media?.original_name;
+  const TITLE = media?.title ? media?.title : media?.name;
   const TITLE_ALT = media?.original_title;
   const REVENUE = media.revenue?.toString().replace(regexPrice, ",");
 
@@ -41,9 +41,8 @@ const MediaDetailsUI = ({ media, genres, images, cast, reviews, similar }) => {
       {media ? (
         <>
           {" "}
-          <SeparatorDetails separatorClass="separator-to-bottom" />
           <div className="flex-details">
-            <Description
+            {POSTER_URL && TITLE ? <Description
               POSTER={POSTER_URL}
               TITLE_ALT={TITLE_ALT}
               TITLE={TITLE}
@@ -55,9 +54,9 @@ const MediaDetailsUI = ({ media, genres, images, cast, reviews, similar }) => {
               TRAILER={MOVIE_TRAILER_OR_TV_TRAILER}
               HOMEPAGE={HOMEPAGE}
               type={media}
-            />
+            /> : <Loader/>}
+            
           </div>
-          <SeparatorDetails separatorClass="separator-to-top" />
           <div className="main-separator">
             <div className="flex-cast">
               <div className="flex-cast-item flex-column-container">
@@ -96,7 +95,7 @@ const MediaDetailsUI = ({ media, genres, images, cast, reviews, similar }) => {
             <div className="flex-review-container">
               <div className="flex-column-container">
                 <h1>What do people think?</h1>
-                {reviews}
+                {reviews ? reviews : <h1>Seems like there aren't any reviews just yet...</h1>}
               </div>
             </div>
 

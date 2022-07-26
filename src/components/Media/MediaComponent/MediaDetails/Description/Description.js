@@ -28,47 +28,31 @@ const Description = ({
           VISIT OFFICIAL WEBSITE <i className="fas fa-link" />
         </a>
 
-        {TITLE ? (
-          <YoutubeTrailer
-            trailer={TRAILER}
-            playTrailer={playTrailer}
-            setPlayTrailer={setPlayTrailer}
-          />
-        ) : (
-          <Loader />
-        )}
+        <YoutubeTrailer
+          trailer={TRAILER}
+          playTrailer={playTrailer}
+          setPlayTrailer={setPlayTrailer}
+        />
 
-        {POSTER && OVERVIEW && TITLE ? (
-          <UserLists type={type} playTrailer={playTrailer} />
-        ) : (
-          <Loader />
-        )}
+        <UserLists type={type} playTrailer={playTrailer} />
 
-        <h1>{TITLE ? TITLE : <Loader />}</h1>
-        <p>{GENRES ? GENRES : <Loader />}</p>
+        <h1>{TITLE}</h1>
+        <p>{GENRES}</p>
         {type?.original_title ? (
           <h3>
-            {RELEASE_OR_FIRST_EPISODE && DURATION_OR_LAST_EPISODE ? (
-              `${RELEASE_OR_FIRST_EPISODE} - ${DURATION_OR_LAST_EPISODE} minutes.`
-            ) : (
-              <Loader />
-            )}
+            {RELEASE_OR_FIRST_EPISODE} - {DURATION_OR_LAST_EPISODE} minutes.
           </h3>
         ) : (
           <h3>
-            {RELEASE_OR_FIRST_EPISODE && DURATION_OR_LAST_EPISODE ? (
-              `${RELEASE_OR_FIRST_EPISODE} - ${DURATION_OR_LAST_EPISODE}.`
-            ) : (
-              <Loader />
-            )}
+            {RELEASE_OR_FIRST_EPISODE} - {DURATION_OR_LAST_EPISODE}.
           </h3>
         )}
         <h3>
           <i className="fa-solid fa-star" />
-          {RATING ? ` ${RATING}` : <Loader />}
+          {RATING}
         </h3>
         <h3>Overview</h3>
-        <p>{OVERVIEW ? OVERVIEW : <Loader />}</p>
+        <p>{OVERVIEW ? OVERVIEW : "It does not have a description yet."}</p>
       </div>
     </>
   );
