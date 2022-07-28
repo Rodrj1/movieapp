@@ -1,6 +1,6 @@
 .category-body {
     width: 100%;
-    background: linear-gradient(to left, rgb(62 17 96), rgb(3 3 40));
+    background: radial-gradient(to left, rgb(62 17 96), rgb(3 3 40));
 }
 
 .category-main-page {
@@ -145,5 +145,14 @@
         background: linear-gradient(to left,
         hsl(272, 88%, 30%),
         hsl(309, 79%, 25%));
+    }
+
+    .music{
+        border-radius: 0px;
+        padding: 20px 0px;
+    }
+
+    .music-container {
+        height: 500px;
     }
 }

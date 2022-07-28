@@ -7,6 +7,7 @@ import CastCard from "../CastCard/CastCard";
 import ReviewUI from "./Review/ReviewUI";
 import Loader from "../../../Loader/Loader";
 import MediaCard from "../MediaCard/MediaCard";
+import Backdrop from "./Backdrop/Backdrop";
 
 const MediaDetails = ({ media, setUpdateMovieMedia, setUpdateTvMedia }) => {
   const { movieId, tvShowId } = useParams();
@@ -22,8 +23,6 @@ const MediaDetails = ({ media, setUpdateMovieMedia, setUpdateTvMedia }) => {
   https://api.themoviedb.org/3/${media}/${LINK_ID}?api_key=1d2291efea2e84d18b938ffde00ff81b&language=en-US&include_image_language&append_to_response=videos,images,credits,reviews,similar&include_image_language=en,null`;
 
   const MEDIA_SIMILAR_URL = `https://api.themoviedb.org/3/${media}/${LINK_ID}/similar?api_key=1d2291efea2e84d18b938ffde00ff81b&language=en-US&page=1`;
-
-  const ORIGINAL_IMG_URL = `https://image.tmdb.org/t/p/original`;
 
   // ------------------------------------------------------------------------
 
@@ -42,17 +41,17 @@ const MediaDetails = ({ media, setUpdateMovieMedia, setUpdateTvMedia }) => {
   }, [movieId, tvShowId]);
 
   useEffect(() => {
-    const fetchMovieData = async () => {
+    const fetchMediaData = async () => {
       try {
-        const getMovie = await axios.get(MEDIA_URL);
-        const getSimilar = await axios.get(MEDIA_SIMILAR_URL);
-        setMediaDetails(getMovie.data);
-        setSimilar(getSimilar.data);
+        const getMedia = await axios.get(MEDIA_URL);
+        const getSimilarMedia = await axios.get(MEDIA_SIMILAR_URL);
+        setMediaDetails(getMedia.data);
+        setSimilar(getSimilarMedia.data);
       } catch (e) {
         console.log(e, "Error fetching data in MovieDetails component.");
       }
     };
-    fetchMovieData();
+    fetchMediaData();
   }, []);
 
   const MEDIA_GENRES = mediaDetails?.genres?.map((genre, index) => {
@@ -71,18 +70,9 @@ const MediaDetails = ({ media, setUpdateMovieMedia, setUpdateTvMedia }) => {
     <ReviewUI key={review.id} review={review} />
   ));
 
-  const MEDIA_IMAGES = mediaDetails?.images?.backdrops?.map((image) => {
-    return (
-      <a
-        title="See backdrop in full resolution."
-        href={`${ORIGINAL_IMG_URL}${image.file_path}`}
-        target="_blank"
-        key={image.file_path}
-      >
-        <img src={`${ORIGINAL_IMG_URL}${image.file_path}`} alt="none" />
-      </a>
-    );
-  });
+  const MEDIA_IMAGES = mediaDetails?.images?.backdrops?.map((image) => (
+    <Backdrop key={image.file_path} backdrop={image} />
+  ));
 
   const MEDIA_SIMILAR = similar?.results?.map((similar) => (
     <MediaCard media={similar} key={uuid()} />

@@ -14,9 +14,11 @@ const Header = () => {
       <Link to="/" className="link">
         <h1 className="flex-item">ARC Fiction</h1>
       </Link>
-      <div className="btn-menu" onClick={handleOnClick}>
-        <i className="fa-solid fa-bars fa-xl" />
-      </div>
+
+      <i
+        onClick={handleOnClick}
+        className="btn-menu fa-solid fa-bars fa-fade fa-xl"
+      />
 
       <ul className={`flex-item ${!openMenu ? "nav-menu active" : "nav-menu"}`}>
         <Link to="/movies" className="link" onClick={handleOnClick}>
